@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Tech Finds & Essentials - Curated Cozy Tech & Aesthetic Desk Gear</title>
+  <meta name="description" content="Curated collection of the best minimalist tech gadgets, warm desk setup gear, and cozy smart tools." />
+  <meta property="og:title" content="Tech Finds & Essentials - Curated Cozy Tech & Aesthetic Desk Gear" />
+  <meta property="og:description" content="Curated collection of the best minimalist tech gadgets, warm desk setup gear, and cozy smart tools." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts: Plus Jakarta Sans & DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['DM Sans', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'DM Sans', sans-serif;
+      letter-spacing: -0.01em;
+      background-color: #FAF8F5;
+      color: #332C2B;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .dark body, html.dark body {
+      background-color: #1C1918;
+      color: #F7F3EE;
+    }
+    h1, h2, h3, h4, h5, h6, .font-display {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      letter-spacing: -0.02em;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body class="bg-[#FAF8F5] dark:bg-[#1C1918] text-[#332C2B] dark:text-[#F7F3EE] min-h-screen transition-colors duration-200">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-30 w-full backdrop-blur-md bg-[#FAF8F5]/90 dark:bg-[#1C1918]/90 border-b border-[#F0EBE1] dark:border-[#3D3635] transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 gap-4">
+        <!-- Brand -->
+        <div class="flex items-center gap-3.5 min-w-0">
+          <div class="flex items-center justify-center w-10 h-10 rounded-2xl bg-[#F4EBE1] dark:bg-[#2F2928] text-[#D98A72] shadow-[0_4px_16px_rgba(217,138,114,0.15)] shrink-0">
+            <svg class="w-5 h-5 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+            </svg>
+          </div>
+          <div class="flex items-center gap-2 min-w-0">
+            <span id="site-title-nav" class="font-display font-bold text-lg sm:text-xl text-[#332C2B] dark:text-[#F7F3EE] truncate tracking-tight">
+              Tech Finds & Essentials
+            </span>
+            <button
+              onclick="openEditModal()"
+              title="Edit Site Details"
+              class="p-1.5 text-[#7A706E] hover:text-[#D98A72] dark:hover:text-[#F4EBE1] rounded-xl hover:bg-[#F4EBE1]/60 dark:hover:bg-[#272322] transition-colors"
+            >
+              <svg class="w-3.5 h-3.5 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 20h9"/><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Desktop Search Bar -->
+        <div class="hidden md:flex flex-1 max-w-md mx-4">
+          <div class="relative w-full">
+            <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#7A706E] pointer-events-none fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"/><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.3-4.3"/>
+            </svg>
+            <input
+              type="text"
+              id="desktop-search"
+              oninput="handleSearch(this.value)"
+              placeholder="Search cozy desk gear, 4K, MagSafe, keyboard..."
+              class="w-full pl-11 pr-10 py-2.5 text-sm bg-[#FFFFFF] dark:bg-[#272322] border border-[#F0EBE1] dark:border-[#3D3635] rounded-2xl text-[#332C2B] dark:text-[#F7F3EE] placeholder:text-[#7A706E]/70 focus:outline-none focus:ring-2 focus:ring-[#D98A72]/40 shadow-[0_2px_12px_rgba(51,44,43,0.02)] transition-all"
+            />
+            <button
+              id="desktop-clear-search"
+              onclick="clearSearch()"
+              class="hidden absolute right-3.5 top-1/2 -translate-y-1/2 text-[#7A706E] hover:text-[#332C2B] dark:hover:text-white p-1"
+            >
+              <svg class="w-3.5 h-3.5 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 6 6 18"/><path stroke-linecap="round" stroke-linejoin="round" d="m6 6 12 12"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Header Actions -->
+        <div class="flex items-center gap-2.5 shrink-0">
+          <button
+            onclick="toggleAdvancedFilters()"
+            id="btn-filter-toggle"
+            class="relative inline-flex items-center gap-2 px-3.5 sm:px-4 py-2.5 text-xs font-semibold rounded-2xl border border-[#F0EBE1] dark:border-[#3D3635] bg-[#FFFFFF] dark:bg-[#272322] text-[#332C2B] dark:text-[#F7F3EE] hover:bg-[#FDF6F0] dark:hover:bg-[#2F2928] shadow-[0_2px_8px_rgba(51,44,43,0.03)] transition-all"
+          >
+            <svg class="w-3.5 h-3.5 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24">
+              <line x1="21" x2="14" y1="4" y2="4"/><line x1="10" x2="3" y1="4" y2="4"/><line x1="21" x2="12" y1="12" y2="12"/><line x1="8" x2="3" y1="12" y2="12"/><line x1="21" x2="16" y1="20" y2="20"/><line x1="12" x2="3" y1="20" y2="20"/>
+            </svg>
+            <span class="hidden sm:inline">Filters</span>
+            <span id="filter-badge" class="hidden inline-flex items-center justify-center w-4 h-4 text-[10px] font-bold rounded-full bg-[#D98A72] text-white">0</span>
+          </button>
+
+          <button
+            onclick="shareCatalog()"
+            class="p-2.5 text-[#332C2B] dark:text-[#F7F3EE] bg-[#FFFFFF] dark:bg-[#272322] border border-[#F0EBE1] dark:border-[#3D3635] rounded-2xl hover:bg-[#FDF6F0] dark:hover:bg-[#2F2928] transition-colors shadow-[0_2px_8px_rgba(51,44,43,0.03)]"
+            title="Share Catalog Link"
+          >
+            <svg class="w-4 h-4 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/>
+            </svg>
+          </button>
+
+          <button
+            onclick="toggleTheme()"
+            class="p-2.5 text-[#332C2B] dark:text-[#F7F3EE] bg-[#FFFFFF] dark:bg-[#272322] border border-[#F0EBE1] dark:border-[#3D3635] rounded-2xl hover:bg-[#FDF6F0] dark:hover:bg-[#2F2928] transition-colors shadow-[0_2px_8px_rgba(51,44,43,0.03)]"
+            title="Toggle Dark/Light Mode"
+          >
+            <svg id="theme-icon-sun" class="hidden w-4 h-4 text-[#D98A72] fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/>
+            </svg>
+            <svg id="theme-icon-moon" class="w-4 h-4 text-[#7A706E] fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Search -->
+      <div class="md:hidden pb-3">
+        <div class="relative w-full">
+          <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#7A706E] pointer-events-none fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"/><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.3-4.3"/>
+          </svg>
+          <input
+            type="text"
+            id="mobile-search"
+            oninput="handleSearch(this.value)"
+            placeholder="Search cozy gear, 4K, MagSafe..."
+            class="w-full pl-10 pr-9 py-2 text-sm bg-[#FFFFFF] dark:bg-[#272322] border border-[#F0EBE1] dark:border-[#3D3635] rounded-2xl text-[#332C2B] dark:text-[#F7F3EE] placeholder:text-[#7A706E]"
+          />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section with Natural Warm Sunlight Feel -->
+  <section class="relative overflow-hidden pt-8 sm:pt-10 pb-8 border-b border-[#F0EBE1] dark:border-[#3D3635] bg-gradient-to-b from-[#FDF6F0]/70 via-[#FAF8F5] to-transparent dark:from-[#25201F] dark:to-[#1C1918]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-4 sm:mb-5 rounded-full bg-[#E2EAE4] dark:bg-[#283830] border border-[#C8D9CD] dark:border-[#375244] text-xs font-medium text-[#2F523D] dark:text-[#C5DDCF]">
+          <span class="flex h-1.5 w-1.5 rounded-full bg-[#4E8362]"></span>
+          <span>Curated with Warmth & Care</span>
+          <span class="opacity-40">·</span>
+          <span>Natural Workspace Aesthetics</span>
+          <span class="opacity-40">·</span>
+          <span>Prime Eligible</span>
+        </div>
+
+        <h1 id="site-title-hero" class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-[#332C2B] dark:text-[#F7F3EE] leading-[1.18]">
+          Tech Finds & Essentials
+        </h1>
+
+        <p id="site-subtitle-hero" class="mt-3 text-sm sm:text-lg text-[#6E6462] dark:text-[#B8AEA8] max-w-2xl leading-relaxed">
+          Curated collection of the best tech gadgets, cozy desk setup gear, and smart tools.
+        </p>
+
+        <!-- Quick Shortcuts -->
+        <div class="mt-5 sm:mt-6 flex flex-wrap items-center gap-2">
+          <span class="text-xs font-semibold text-[#8C807E] dark:text-[#9E9490] uppercase tracking-wider mr-1">
+            Explore:
+          </span>
+          <button
+            onclick="setQuickFilter('top-picks')"
+            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-medium rounded-full bg-[#FDF6F0] text-[#844E3F] dark:bg-[#342724] dark:text-[#E8A593] border border-[#F4DDD0] dark:border-[#523A33] hover:bg-[#F9ECE3] transition-colors"
+          >
+            <span>✨ Top Picks</span>
+          </button>
+          <button
+            onclick="setQuickFilter('under-50')"
+            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-medium rounded-full bg-[#E2EAE4] text-[#355442] dark:bg-[#25362C] dark:text-[#B6D6C2] border border-[#CDE0D2] dark:border-[#3A5445] hover:bg-[#D7E2DA] transition-colors"
+          >
+            <span>⚡ Cool Tech Under $50</span>
+          </button>
+          <button
+            onclick="setCategory('Aesthetic Desk Setup')"
+            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-medium rounded-full bg-[#F4EBE1] text-[#6E5642] dark:bg-[#332B25] dark:text-[#DEC8B2] border border-[#E8DACB] dark:border-[#4D3F35] hover:bg-[#EDE1D3] transition-colors"
+          >
+            <span>Desk Setup Essentials →</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+    <!-- Category Tabs & Sorting -->
+    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+      <div id="category-tabs-container" class="flex items-center gap-2 overflow-x-auto pb-2 lg:pb-0 no-scrollbar">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="flex items-center gap-2.5 shrink-0 self-start sm:self-auto">
+        <div class="relative inline-flex items-center">
+          <svg class="absolute left-3.5 w-3.5 h-3.5 text-[#7A706E] pointer-events-none fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m7 15 5 5 5-5"/><path stroke-linecap="round" stroke-linejoin="round" d="m7 9 5-5 5 5"/>
+          </svg>
+          <select
+            id="sort-select"
+            onchange="handleSort(this.value)"
+            class="pl-9 pr-9 py-2.5 text-xs sm:text-sm font-medium bg-[#FFFFFF] dark:bg-[#272322] text-[#332C2B] dark:text-[#F7F3EE] border border-[#F0EBE1] dark:border-[#3D3635] rounded-2xl appearance-none focus:outline-none focus:ring-2 focus:ring-[#D98A72]/40 shadow-[0_2px_8px_rgba(51,44,43,0.02)] cursor-pointer"
+          >
+            <option value="featured">Sort: Featured</option>
+            <option value="price-asc">Sort: Price: Low to High</option>
+            <option value="price-desc">Sort: Price: High to Low</option>
+            <option value="rating-desc">Sort: Highest Rated</option>
+          </select>
+        </div>
+
+        <button
+          onclick="toggleAdvancedFilters()"
+          class="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-medium rounded-2xl border border-[#F0EBE1] dark:border-[#3D3635] bg-[#FFFFFF] dark:bg-[#272322] text-[#6E6462] dark:text-[#B8AEA8] hover:bg-[#FDF6F0]"
+        >
+          <span>Filters</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Advanced Filters Panel (Collapsible) -->
+    <div id="advanced-filters-panel" class="hidden mt-5 p-5 sm:p-6 bg-[#FFFFFF] dark:bg-[#272322] rounded-3xl border border-[#F0EBE1] dark:border-[#3D3635] shadow-[0_8px_30px_rgba(51,44,43,0.04)] transition-all">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Price Slider -->
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <label class="text-xs font-semibold uppercase tracking-wider text-[#7A706E] dark:text-[#A89D98]">
+              Max Price: Up to <span id="max-price-display" class="font-bold text-[#D98A72]">$150</span>
+            </label>
+            <button onclick="resetPriceFilter()" class="text-[11px] text-[#D98A72] hover:underline">Reset</button>
+          </div>
+          <input
+            type="range"
+            id="price-range-slider"
+            min="20"
+            max="150"
+            step="5"
+            value="150"
+            oninput="handlePriceSlider(this.value)"
+            class="w-full h-2 bg-[#F4EBE1] dark:bg-[#3A3331] rounded-lg appearance-none cursor-pointer accent-[#D98A72]"
+          />
+          <div class="flex justify-between text-[11px] text-[#7A706E] mt-1 font-mono">
+            <span>$20</span><span>$50</span><span>$100</span><span>$150+</span>
+          </div>
+        </div>
+
+        <!-- Rating Selector -->
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <label class="text-xs font-semibold uppercase tracking-wider text-[#7A706E] dark:text-[#A89D98]">
+              Customer Rating
+            </label>
+            <button onclick="setRatingFilter(0)" class="text-[11px] text-[#D98A72] hover:underline">Reset</button>
+          </div>
+          <div class="grid grid-cols-4 gap-1.5" id="rating-buttons-group">
+            <button onclick="setRatingFilter(0)" class="rating-btn py-2 px-1 text-xs font-medium rounded-xl border border-transparent bg-[#332C2B] text-white dark:bg-[#F4EBE1] dark:text-[#332C2B]" data-rating="0">All</button>
+            <button onclick="setRatingFilter(4.5)" class="rating-btn py-2 px-1 text-xs font-medium rounded-xl border border-[#F0EBE1] dark:border-[#3D3635] bg-[#FAF8F5] dark:bg-[#1C1918] text-[#6E6462] dark:text-[#B8AEA8]" data-rating="4.5">4.5+ ★</button>
+            <button onclick="setRatingFilter(4.7)" class="rating-btn py-2 px-1 text-xs font-medium rounded-xl border border-[#F0EBE1] dark:border-[#3D3635] bg-[#FAF8F5] dark:bg-[#1C1918] text-[#6E6462] dark:text-[#B8AEA8]" data-rating="4.7">4.7+ ★</button>
+            <button onclick="setRatingFilter(4.8)" class="rating-btn py-2 px-1 text-xs font-medium rounded-xl border border-[#F0EBE1] dark:border-[#3D3635] bg-[#FAF8F5] dark:bg-[#1C1918] text-[#6E6462] dark:text-[#B8AEA8]" data-rating="4.8">4.8+ ★</button>
+          </div>
+        </div>
+
+        <!-- Features -->
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <label class="text-xs font-semibold uppercase tracking-wider text-[#7A706E] dark:text-[#A89D98]">
+              Key Features
+            </label>
+            <button onclick="clearFeatureFilters()" class="text-[11px] text-[#D98A72] hover:underline">Clear</button>
+          </div>
+          <div id="feature-chips-container" class="flex flex-wrap gap-1.5">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-5 pt-3.5 border-t border-[#F0EBE1] dark:border-[#3D3635] flex items-center justify-between flex-wrap gap-2 text-xs">
+        <div class="text-[#7A706E] dark:text-[#A89D98]">
+          Showing <span id="match-count" class="font-semibold text-[#332C2B] dark:text-[#F7F3EE] font-mono">8</span> tech finds
+        </div>
+        <button onclick="resetAllFilters()" class="text-xs text-[#D98A72] hover:underline font-medium">
+          ↺ Reset All Filters
+        </button>
+      </div>
+    </div>
+
+    <!-- Product Cards Grid -->
+    <div id="product-grid" class="pt-8 pb-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7">
+      <!-- Injected by Vanilla JS -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="hidden py-20 text-center max-w-md mx-auto">
+      <div class="w-14 h-14 mx-auto rounded-3xl bg-[#F4EBE1] dark:bg-[#272322] flex items-center justify-center text-[#D98A72] mb-4 shadow-sm text-2xl">
+        🔍
+      </div>
+      <h3 class="font-display font-semibold text-lg text-[#332C2B] dark:text-[#F7F3EE]">
+        No cozy finds match your criteria
+      </h3>
+      <p class="mt-2 text-xs sm:text-sm text-[#7A706E] dark:text-[#A89D98] leading-relaxed">
+        Try broadening your filters or resetting to view all curated desk items.
+      </p>
+      <button
+        onclick="resetAllFilters()"
+        class="mt-5 inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold rounded-2xl bg-[#332C2B] text-white dark:bg-[#F4EBE1] dark:text-[#332C2B] hover:bg-[#473E3D] transition-colors"
+      >
+        <span>Reset All Filters</span>
+      </button>
+    </div>
+  </main>
+
+  <!-- Quick View Modal -->
+  <div id="quick-view-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <div onclick="closeQuickView()" class="fixed inset-0 bg-[#332C2B]/60 backdrop-blur-sm"></div>
+    <div class="relative w-full max-w-3xl bg-[#FFFFFF] dark:bg-[#272322] rounded-3xl border border-[#F0EBE1] dark:border-[#3D3635] shadow-[0_25px_60px_-15px_rgba(51,44,43,0.22)] overflow-hidden z-10 max-h-[90vh] flex flex-col my-auto">
+      <div class="absolute top-4 right-4 z-20 flex items-center gap-2">
+        <button id="modal-share-btn" class="p-2.5 rounded-full bg-[#FFFFFF]/90 dark:bg-[#272322]/90 text-[#332C2B] dark:text-[#F7
