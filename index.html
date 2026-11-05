@@ -49,7 +49,7 @@
       <div class="flex items-center gap-2 w-full sm:w-auto">
         <div class="relative flex-1 sm:w-72">
           <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
-          <input type="text" id="searchInput" placeholder="Search gear, 4K, MagSafe, smart..." 
+          <input type="text" id="searchInput" placeholder="Search gear, mic, tripod, 4K..." 
                  class="w-full bg-white border border-stone-200 rounded-full pl-9 pr-4 py-2 text-xs text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sageText/30 shadow-sm transition">
         </div>
         <button onclick="shareWebsite()" class="hidden sm:flex p-2 text-gray-600 hover:text-gray-900 bg-white border border-stone-200 rounded-full text-xs items-center justify-center w-9 h-9 shadow-sm" title="Share Website">
@@ -87,6 +87,9 @@
         <button onclick="filterCategory('all')" class="bg-sageText text-white px-3.5 py-1.5 rounded-full text-xs font-medium hover:bg-stone-800 transition shadow-sm flex items-center gap-1.5">
           ✨ Top Picks
         </button>
+        <button onclick="filterCategory('creator')" class="bg-purple-50 text-purple-800 border border-purple-200 px-3.5 py-1.5 rounded-full text-xs font-medium hover:bg-purple-700 hover:text-white transition flex items-center gap-1.5">
+          📹 Creator & Vlogging
+        </button>
         <button onclick="filterCategory('smart')" class="bg-blue-50 text-blue-800 border border-blue-200 px-3.5 py-1.5 rounded-full text-xs font-medium hover:bg-blue-600 hover:text-white transition flex items-center gap-1.5">
           🏠 Smart Home & Office
         </button>
@@ -103,7 +106,7 @@
         <!-- Category Tabs -->
         <div class="flex items-center gap-2 overflow-x-auto pb-1 max-w-full no-scrollbar" id="categoryTabs">
           <button onclick="filterCategory('all')" id="tab-all" class="cat-tab bg-sageText text-white font-bold px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0 shadow-sm">
-            All <span id="count-all" class="bg-white/20 text-white px-1.5 py-0.5 rounded-md text-[10px]">10</span>
+            All <span id="count-all" class="bg-white/20 text-white px-1.5 py-0.5 rounded-md text-[10px]">15</span>
           </button>
           <button onclick="filterCategory('desk')" id="tab-desk" class="cat-tab bg-white text-gray-700 hover:text-gray-900 border border-stone-200 px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0">
             Aesthetic Desk Setup <span id="count-desk" class="bg-stone-100 text-gray-600 px-1.5 py-0.5 rounded-md text-[10px]">5</span>
@@ -111,8 +114,11 @@
           <button onclick="filterCategory('smart')" id="tab-smart" class="cat-tab bg-white text-gray-700 hover:text-gray-900 border border-stone-200 px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0">
             Smart Home & Office <span id="count-smart" class="bg-stone-100 text-gray-600 px-1.5 py-0.5 rounded-md text-[10px]">5</span>
           </button>
+          <button onclick="filterCategory('creator')" id="tab-creator" class="cat-tab bg-white text-gray-700 hover:text-gray-900 border border-stone-200 px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0">
+            Creator & Vlogging <span id="count-creator" class="bg-stone-100 text-gray-600 px-1.5 py-0.5 rounded-md text-[10px]">5</span>
+          </button>
           <button onclick="filterCategory('under50')" id="tab-under50" class="cat-tab bg-white text-gray-700 hover:text-gray-900 border border-stone-200 px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0">
-            Cool Tech Under $50 <span id="count-under50" class="bg-stone-100 text-gray-600 px-1.5 py-0.5 rounded-md text-[10px]">5</span>
+            Cool Tech Under $50 <span id="count-under50" class="bg-stone-100 text-gray-600 px-1.5 py-0.5 rounded-md text-[10px]">7</span>
           </button>
         </div>
 
@@ -169,6 +175,7 @@
           <ul class="space-y-2.5 text-xs text-gray-600">
             <li><a href="#" onclick="filterCategory('desk'); return false;" class="hover:text-sageText transition">Aesthetic Desk Setup</a></li>
             <li><a href="#" onclick="filterCategory('smart'); return false;" class="hover:text-sageText transition">Smart Home & Office Gadgets</a></li>
+            <li><a href="#" onclick="filterCategory('creator'); return false;" class="hover:text-sageText transition">Creator & Vlogging Gear</a></li>
             <li><a href="#" onclick="filterCategory('under50'); return false;" class="hover:text-sageText transition">Cool Tech Under $50</a></li>
           </ul>
         </div>
@@ -354,9 +361,82 @@
         image: "./levoit-air-purifiers.jpg",
         link: "https://link.amazon/B07VPomVw",
         rating: "4.6"
+      },
+
+      // Kategori: Creator & Vlogging Gear
+      {
+        id: 11,
+        title: "ULANZI VL49 RGB Video Lights LED Camera Light with 3 Cold Shoe & 1/4 Screw",
+        category: "creator",
+        categoryLabel: "Creator & Vlogging",
+        rawPrice: 18.95,
+        price: "$18.95",
+        badges: [
+          { label: "⚡ 37% OFF", color: "bg-emerald-50 text-emerald-800 border-emerald-200" },
+          { label: "✨ Overall Pick", color: "bg-sageAccent text-sageText border-sageText/20" }
+        ],
+        image: "./ulanzi-vl49-rgb.jpg",
+        link: "https://link.amazon/B0bGvTyHv",
+        rating: "4.6"
+      },
+      {
+        id: 12,
+        title: "ULANZI Camera Tripod, Mini Flexible Phone Stand w Hidden Phone Holder",
+        category: "creator",
+        categoryLabel: "Creator & Vlogging",
+        rawPrice: 21.99,
+        price: "$21.99",
+        badges: [
+          { label: "✨ Overall Pick", color: "bg-sageAccent text-sageText border-sageText/20" },
+          { label: "⚡ Under $50", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
+        ],
+        image: "./ulanzi-camera-tripod.jpg",
+        link: "https://link.amazon/B0c5ErQwq",
+        rating: "4.5"
+      },
+      {
+        id: 13,
+        title: "DJI Mic 2 (2 TX + 1 RX + Charging Case), All-in-one Wireless Microphone",
+        category: "creator",
+        categoryLabel: "Creator & Vlogging",
+        rawPrice: 189.05,
+        price: "$189.05",
+        badges: [
+          { label: "✨ Top Pick", color: "bg-sageAccent text-sageText border-sageText/20" }
+        ],
+        image: "./dji-mic2-cancelingnoise.jpg",
+        link: "https://link.amazon/B03tbgBt6",
+       rating: "4.6"
+      },
+      {
+        id: 14,
+        title: "Hollyland Lark M2 Wireless Microphone for iPhone/Camera/Android/PC, 48kHz/24-bit High Fidelity Audio",
+        category: "creator",
+        categoryLabel: "Creator & Vlogging",
+        rawPrice: 89.10,
+        price: "$89.10",
+        badges: [
+          { label: "🔥 Best seller", color: "bg-amberAccent text-amberText border-amberText/20" }
+        ],
+        image: "./hollyland-lark-m2.jpg",
+        link: "https://link.amazon/B01LPJike",
+        rating: "4.7"
+      },
+      {
+        id: 15,
+        title: "DJI Osmo Mobile 6, 3-Axis Phone Gimbal, Object Tracking, Built-in Extension Rod, Portable and Foldable",
+        category: "creator",
+        categoryLabel: "Creator & Vlogging",
+        rawPrice: 109.00,
+        price: "$109.00",
+        badges: [
+          { label: "✨ Top Pick", color: "bg-sageAccent text-sageText border-sageText/20" }
+        ],
+        image: "./dji-osmo-mobile6.jpg",
+        link: "https://link.amazon/B03U2RxKt",
+        rating: "4.5"
       }
     ];
-
     let currentCategory = 'all';
 
     function renderProducts(items) {
@@ -414,7 +494,6 @@
         </div>
       `).join('');
     }
-
     function filterCategory(cat) {
       currentCategory = cat;
       
@@ -471,21 +550,23 @@
 
       renderProducts(items);
     }
-
     function updateCounts() {
       const allCount = products.length;
       const deskCount = products.filter(p => p.category === 'desk').length;
       const smartCount = products.filter(p => p.category === 'smart').length;
+      const creatorCount = products.filter(p => p.category === 'creator').length;
       const under50Count = products.filter(p => p.rawPrice < 50).length;
 
       const elAll = document.getElementById('count-all');
       const elDesk = document.getElementById('count-desk');
       const elSmart = document.getElementById('count-smart');
+      const elCreator = document.getElementById('count-creator');
       const elUnder = document.getElementById('count-under50');
 
       if (elAll) elAll.innerText = allCount;
       if (elDesk) elDesk.innerText = deskCount;
       if (elSmart) elSmart.innerText = smartCount;
+      if (elCreator) elCreator.innerText = creatorCount;
       if (elUnder) elUnder.innerText = under50Count;
     }
 
