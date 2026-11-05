@@ -25,14 +25,15 @@
       }
     }
   </script>
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
 </head>
 <body class="bg-[#FAF8F5] text-gray-800 font-sans min-h-screen flex flex-col justify-between selection:bg-sageText selection:text-white">
 
-  <!-- Sticky Header -->
+  <!-- Header -->
   <header class="sticky top-0 z-50 bg-[#FAF8F5]/90 backdrop-blur-md border-b border-stone-200/70 px-4 py-3">
     <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-      
-      <!-- Brand Logo & Title -->
       <div class="flex items-center justify-between w-full sm:w-auto">
         <div class="flex items-center gap-2.5">
           <div class="w-9 h-9 rounded-xl bg-amberAccent text-amberText flex items-center justify-center font-bold text-base shadow-sm">
@@ -40,16 +41,11 @@
           </div>
           <span class="font-bold text-lg text-gray-900 tracking-tight">Tech Finds & Essentials</span>
         </div>
-        
-        <!-- Mobile Action Button -->
-        <div class="flex items-center gap-2 sm:hidden">
-          <button onclick="shareWebsite()" class="p-2 text-gray-600 hover:text-gray-900 bg-white border border-stone-200 rounded-lg text-xs shadow-sm" title="Share Website">
-            <i class="fa-solid fa-share-nodes"></i>
-          </button>
-        </div>
+        <button onclick="shareWebsite()" class="sm:hidden p-2 text-gray-600 hover:text-gray-900 bg-white border border-stone-200 rounded-lg text-xs shadow-sm" title="Share Website">
+          <i class="fa-solid fa-share-nodes"></i>
+        </button>
       </div>
 
-      <!-- Search Input & Share -->
       <div class="flex items-center gap-2 w-full sm:w-auto">
         <div class="relative flex-1 sm:w-72">
           <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
@@ -60,7 +56,6 @@
           <i class="fa-solid fa-share-nodes"></i>
         </button>
       </div>
-
     </div>
   </header>
 
@@ -105,29 +100,27 @@
     <section class="mt-6 mb-4">
       <div class="flex flex-wrap items-center justify-between gap-3 border-b border-stone-200/80 pb-4">
         
-        <!-- Category Tabs with Dynamic Item Counters -->
+        <!-- Category Tabs -->
         <div class="flex items-center gap-2 overflow-x-auto pb-1 max-w-full no-scrollbar" id="categoryTabs">
           <button onclick="filterCategory('all')" id="tab-all" class="cat-tab bg-sageText text-white font-bold px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0 shadow-sm">
-            All <span class="bg-white/20 text-white px-1.5 py-0.5 rounded-md text-[10px]" id="count-all">5</span>
+            All <span id="count-all" class="bg-white/20 text-white px-1.5 py-0.5 rounded-md text-[10px]">5</span>
           </button>
           <button onclick="filterCategory('desk')" id="tab-desk" class="cat-tab bg-white text-gray-700 hover:text-gray-900 border border-stone-200 px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0">
-            Aesthetic Desk Setup <span class="bg-stone-100 text-gray-600 px-1.5 py-0.5 rounded-md text-[10px]" id="count-desk">4</span>
+            Aesthetic Desk Setup <span id="count-desk" class="bg-stone-100 text-gray-600 px-1.5 py-0.5 rounded-md text-[10px]">4</span>
           </button>
           <button onclick="filterCategory('under50')" id="tab-under50" class="cat-tab bg-white text-gray-700 hover:text-gray-900 border border-stone-200 px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0">
-            Cool Tech Under $50 <span class="bg-stone-100 text-gray-600 px-1.5 py-0.5 rounded-md text-[10px]" id="count-under50">1</span>
+            Cool Tech Under $50 <span id="count-under50" class="bg-stone-100 text-gray-600 px-1.5 py-0.5 rounded-md text-[10px]">1</span>
           </button>
         </div>
 
-        <!-- Sort Control Dropdown -->
+        <!-- Sort Dropdown -->
         <div class="flex items-center gap-2 ml-auto">
-          <div class="relative inline-block text-left">
-            <select id="sortSelect" onchange="sortProducts()" class="bg-white text-gray-700 border border-stone-200 rounded-full px-3 py-2 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-sageText/30 cursor-pointer shadow-sm">
-              <option value="featured">⇅ Sort: Featured</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
-              <option value="rating">Highest Rated</option>
-            </select>
-          </div>
+          <select id="sortSelect" onchange="sortProducts()" class="bg-white text-gray-700 border border-stone-200 rounded-full px-3 py-2 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-sageText/30 cursor-pointer shadow-sm">
+            <option value="featured">⇅ Sort: Featured</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Highest Rated</option>
+          </select>
         </div>
 
       </div>
@@ -145,8 +138,6 @@
     <div class="max-w-5xl mx-auto">
       
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-        
-        <!-- Brand & Bio -->
         <div class="space-y-4">
           <div class="flex items-center gap-2.5">
             <div class="w-8 h-8 rounded-xl bg-amberAccent text-amberText flex items-center justify-center font-bold text-sm shadow-sm">
@@ -157,8 +148,6 @@
           <p class="text-xs text-gray-600 leading-relaxed">
             Curated gear guides for remote professionals, developers, and visual content creators. We research, test, and hand-pick the cleanest desk aesthetic essentials and smart gadgets.
           </p>
-          
-          <!-- Social Profiles -->
           <div class="flex items-center gap-2 pt-2">
             <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white border border-stone-200 text-gray-600 hover:text-red-600 flex items-center justify-center text-sm shadow-sm transition" title="Pinterest">
               <i class="fa-brands fa-pinterest-p"></i>
@@ -172,7 +161,6 @@
           </div>
         </div>
 
-        <!-- Collections Column -->
         <div>
           <h4 class="text-xs font-bold uppercase tracking-wider text-gray-900 mb-4">Collections</h4>
           <ul class="space-y-2.5 text-xs text-gray-600">
@@ -183,20 +171,18 @@
           </ul>
         </div>
 
-        <!-- Transparency Column -->
         <div>
           <h4 class="text-xs font-bold uppercase tracking-wider text-gray-900 mb-4">Transparency</h4>
           <p class="text-xs text-gray-600 leading-relaxed mb-4">
             Prices and availability are subject to change. Amazon and the Amazon logo are trademarks of Amazon.com, Inc. or its affiliates.
           </p>
-          <button onclick="scrollToTop()" class="inline-flex items-center gap-2 text-xs text-gray-700 hover:text-gray-900 bg-white border border-stone-200 px-3.5 py-2 rounded-full shadow-sm transition">
+          <button onclick="scrollToTop()" class="inline-flex items-center gap-2 text-xs text-gray-700 hover:text-gray-900 bg-white border border-stone-200 px-3.5 py-2 rounded-full shadow-sm transition cursor-pointer">
             <i class="fa-solid fa-arrow-up"></i> Back to Top
           </button>
         </div>
-
       </div>
 
-      <!-- Amazon Associate Program Disclosure Box (Mandatory TOS) -->
+      <!-- Amazon Associate Disclosure -->
       <div class="bg-white border border-amber-200/80 rounded-2xl p-4 sm:p-5 mb-8 flex gap-3.5 items-start shadow-sm">
         <div class="text-amberText text-base mt-0.5">
           <i class="fa-solid fa-circle-info"></i>
@@ -207,7 +193,6 @@
         </div>
       </div>
 
-      <!-- Bottom Copyright Bar -->
       <div class="border-t border-stone-200/80 pt-6 text-center text-xs text-gray-500 space-y-1">
         <p>&copy; 2026 Tech Finds & Essentials. All rights reserved.</p>
         <p class="text-[11px] text-gray-400">Designed for Instagram, Pinterest & Tech Creators</p>
@@ -216,9 +201,8 @@
     </div>
   </footer>
 
-  <!-- Embedded Data & Interactive Scripts -->
+  <!-- Safe JavaScript -->
   <script>
-    // Data Produk Amazon Affiliate (Variasi Warna Putih / Soft Tone Diprioritaskan)
     const products = [
       {
         id: 1,
@@ -295,7 +279,7 @@
       const grid = document.getElementById('product-grid');
       if (!grid) return;
       
-      if (items.length === 0) {
+      if (!items || items.length === 0) {
         grid.innerHTML = `
           <div class="col-span-full text-center py-12 text-gray-500">
             <i class="fa-solid fa-box-open text-3xl mb-2"></i>
@@ -308,11 +292,8 @@
       grid.innerHTML = items.map(item => `
         <div class="bg-white rounded-2xl p-4 border border-stone-200/80 shadow-sm hover:shadow-md transition flex flex-col justify-between group">
           <div>
-            <!-- Image Frame -->
             <div class="relative w-full h-52 rounded-xl overflow-hidden mb-3 bg-[#FAF8F5] flex items-center justify-center p-3 border border-stone-100">
               <img src="${item.image}" alt="${item.title}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-300">
-              
-              <!-- Badges Container -->
               <div class="absolute top-2 left-2 flex flex-wrap gap-1.5 max-w-[80%]">
                 ${item.badges.map(b => `
                   <span class="backdrop-blur-md px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${b.color} shadow-sm">
@@ -320,16 +301,13 @@
                   </span>
                 `).join('')}
               </div>
-
-              <!-- Quick Action Share -->
               <div class="absolute top-2 right-2 flex flex-col gap-1.5 opacity-90">
-                <button onclick="shareProduct('${item.title}', '${item.link}')" class="w-7 h-7 rounded-full bg-white/90 backdrop-blur-md text-gray-600 hover:text-gray-900 flex items-center justify-center text-[11px] shadow-sm transition" title="Share Product">
+                <button onclick="shareProduct('${item.title.replace(/'/g, "\\'")}', '${item.link}')" class="w-7 h-7 rounded-full bg-white/90 backdrop-blur-md text-gray-600 hover:text-gray-900 flex items-center justify-center text-[11px] shadow-sm transition" title="Share Product">
                   <i class="fa-solid fa-share-nodes"></i>
                 </button>
               </div>
             </div>
 
-            <!-- Category & Rating -->
             <div class="flex items-center justify-between mb-1.5">
               <span class="text-[10px] font-bold uppercase tracking-wider text-sageText">Aesthetic Desk Setup</span>
               <span class="text-xs text-amber-500 font-bold flex items-center gap-1">
@@ -337,13 +315,11 @@
               </span>
             </div>
 
-            <!-- Product Title -->
             <h3 class="font-semibold text-gray-900 text-sm mb-3 line-clamp-2 leading-snug hover:text-sageText transition" title="${item.title}">
               ${item.title}
             </h3>
           </div>
 
-          <!-- Price & Affiliate CTA -->
           <div class="flex items-center justify-between pt-3 border-t border-stone-100">
             <span class="text-base font-extrabold text-gray-900">${item.price}</span>
             <a href="${item.link}" target="_blank" rel="noopener noreferrer" 
@@ -358,16 +334,17 @@
     function filterCategory(cat) {
       currentCategory = cat;
       
-      // Update Tab CSS
       document.querySelectorAll('.cat-tab').forEach(tab => {
         tab.className = "cat-tab bg-white text-gray-700 hover:text-gray-900 border border-stone-200 px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0";
-        tab.querySelector('span').className = "bg-stone-100 text-gray-600 px-1.5 py-0.5 rounded-md text-[10px]";
+        const badge = tab.querySelector('span');
+        if (badge) badge.className = "bg-stone-100 text-gray-600 px-1.5 py-0.5 rounded-md text-[10px]";
       });
       
       const activeTab = document.getElementById(`tab-${cat}`);
       if (activeTab) {
         activeTab.className = "cat-tab bg-sageText text-white font-bold px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0 shadow-sm";
-        activeTab.querySelector('span').className = "bg-white/20 text-white px-1.5 py-0.5 rounded-md text-[10px]";
+        const badge = activeTab.querySelector('span');
+        if (badge) badge.className = "bg-white/20 text-white px-1.5 py-0.5 rounded-md text-[10px]";
       }
 
       applyFilters();
@@ -375,7 +352,7 @@
 
     function applyFilters() {
       const search = document.getElementById('searchInput')?.value.toLowerCase() || '';
-      let filtered = products;
+      let filtered = [...products];
 
       if (currentCategory !== 'all') {
         filtered = filtered.filter(p => p.category === currentCategory);
@@ -412,4 +389,42 @@
       const deskCount = products.filter(p => p.category === 'desk').length;
       const under50Count = products.filter(p => p.category === 'under50').length;
 
-      document.getElementById('count-all').innerText = allCount
+      const elAll = document.getElementById('count-all');
+      const elDesk = document.getElementById('count-desk');
+      const elUnder = document.getElementById('count-under50');
+
+      if (elAll) elAll.innerText = allCount;
+      if (elDesk) elDesk.innerText = deskCount;
+      if (elUnder) elUnder.innerText = under50Count;
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function shareWebsite() {
+      if (navigator.share) {
+        navigator.share({ title: 'Tech Finds & Essentials', url: window.location.href });
+      } else {
+        navigator.clipboard?.writeText(window.location.href);
+        alert('Website URL copied!');
+      }
+    }
+
+    function shareProduct(title, link) {
+      if (navigator.share) {
+        navigator.share({ title: title, url: link });
+      } else {
+        navigator.clipboard?.writeText(link);
+        alert('Product link copied!');
+      }
+    }
+
+    document.getElementById('searchInput')?.addEventListener('input', applyFilters);
+
+    // Initial load
+    renderProducts(products);
+    updateCounts();
+  </script>
+</body>
+</html>
