@@ -31,7 +31,7 @@
 </head>
 <body class="bg-[#FAF8F5] text-gray-800 font-sans min-h-screen flex flex-col justify-between selection:bg-sageText selection:text-white">
 
-  <!-- Header -->
+  <!-- Header & Search -->
   <header class="sticky top-0 z-50 bg-[#FAF8F5]/90 backdrop-blur-md border-b border-stone-200/70 px-4 py-3">
     <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
       <div class="flex items-center justify-between w-full sm:w-auto">
@@ -49,7 +49,7 @@
       <div class="flex items-center gap-2 w-full sm:w-auto">
         <div class="relative flex-1 sm:w-72">
           <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
-          <input type="text" id="searchInput" placeholder="Search gear, 4K, MagSafe, wireless..." 
+          <input type="text" id="searchInput" placeholder="Search gear, 4K, MagSafe, smart..." 
                  class="w-full bg-white border border-stone-200 rounded-full pl-9 pr-4 py-2 text-xs text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sageText/30 shadow-sm transition">
         </div>
         <button onclick="shareWebsite()" class="hidden sm:flex p-2 text-gray-600 hover:text-gray-900 bg-white border border-stone-200 rounded-full text-xs items-center justify-center w-9 h-9 shadow-sm" title="Share Website">
@@ -61,7 +61,7 @@
 
   <div class="max-w-5xl mx-auto px-4 w-full flex-grow">
     
-    <!-- Feature Pill Banner -->
+    <!-- Feature Pills Banner -->
     <div class="mt-6 flex flex-wrap items-center justify-center sm:justify-start gap-2 text-[11px] font-medium text-gray-600">
       <span class="inline-flex items-center gap-1.5 bg-sageAccent text-sageText border border-sageText/10 px-3 py-1 rounded-full shadow-sm">
         <span class="w-2 h-2 rounded-full bg-sageText animate-pulse"></span> Curated Tech Catalog
@@ -87,11 +87,11 @@
         <button onclick="filterCategory('all')" class="bg-sageText text-white px-3.5 py-1.5 rounded-full text-xs font-medium hover:bg-stone-800 transition shadow-sm flex items-center gap-1.5">
           ✨ Top Picks
         </button>
-        <button onclick="filterCategory('under50')" class="bg-sageAccent text-sageText border border-sageText/20 px-3.5 py-1.5 rounded-full text-xs font-medium hover:bg-sageText hover:text-white transition flex items-center gap-1.5">
-          ⚡ Cool Tech Under $50
+        <button onclick="filterCategory('smart')" class="bg-blue-50 text-blue-800 border border-blue-200 px-3.5 py-1.5 rounded-full text-xs font-medium hover:bg-blue-600 hover:text-white transition flex items-center gap-1.5">
+          🏠 Smart Home & Office
         </button>
-        <button onclick="filterCategory('desk')" class="bg-amberAccent text-amberText border border-amberText/20 px-3.5 py-1.5 rounded-full text-xs font-medium hover:bg-amberText hover:text-white transition flex items-center gap-1.5">
-          Desk Setup Gear &rarr;
+        <button onclick="filterCategory('under50')" class="bg-emerald-50 text-emerald-800 border border-emerald-200 px-3.5 py-1.5 rounded-full text-xs font-medium hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5">
+          ⚡ Under $50
         </button>
       </div>
     </section>
@@ -103,17 +103,20 @@
         <!-- Category Tabs -->
         <div class="flex items-center gap-2 overflow-x-auto pb-1 max-w-full no-scrollbar" id="categoryTabs">
           <button onclick="filterCategory('all')" id="tab-all" class="cat-tab bg-sageText text-white font-bold px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0 shadow-sm">
-            All <span id="count-all" class="bg-white/20 text-white px-1.5 py-0.5 rounded-md text-[10px]">5</span>
+            All <span id="count-all" class="bg-white/20 text-white px-1.5 py-0.5 rounded-md text-[10px]">10</span>
           </button>
           <button onclick="filterCategory('desk')" id="tab-desk" class="cat-tab bg-white text-gray-700 hover:text-gray-900 border border-stone-200 px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0">
-            Aesthetic Desk Setup <span id="count-desk" class="bg-stone-100 text-gray-600 px-1.5 py-0.5 rounded-md text-[10px]">4</span>
+            Aesthetic Desk Setup <span id="count-desk" class="bg-stone-100 text-gray-600 px-1.5 py-0.5 rounded-md text-[10px]">5</span>
+          </button>
+          <button onclick="filterCategory('smart')" id="tab-smart" class="cat-tab bg-white text-gray-700 hover:text-gray-900 border border-stone-200 px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0">
+            Smart Home & Office <span id="count-smart" class="bg-stone-100 text-gray-600 px-1.5 py-0.5 rounded-md text-[10px]">5</span>
           </button>
           <button onclick="filterCategory('under50')" id="tab-under50" class="cat-tab bg-white text-gray-700 hover:text-gray-900 border border-stone-200 px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0">
-            Cool Tech Under $50 <span id="count-under50" class="bg-stone-100 text-gray-600 px-1.5 py-0.5 rounded-md text-[10px]">1</span>
+            Cool Tech Under $50 <span id="count-under50" class="bg-stone-100 text-gray-600 px-1.5 py-0.5 rounded-md text-[10px]">5</span>
           </button>
         </div>
 
-        <!-- Sort Dropdown -->
+        <!-- Sort Control Dropdown -->
         <div class="flex items-center gap-2 ml-auto">
           <select id="sortSelect" onchange="sortProducts()" class="bg-white text-gray-700 border border-stone-200 rounded-full px-3 py-2 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-sageText/30 cursor-pointer shadow-sm">
             <option value="featured">⇅ Sort: Featured</option>
@@ -126,7 +129,7 @@
       </div>
     </section>
 
-    <!-- Product Grid -->
+    <!-- Product Display Grid -->
     <main class="my-6">
       <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </main>
@@ -165,9 +168,8 @@
           <h4 class="text-xs font-bold uppercase tracking-wider text-gray-900 mb-4">Collections</h4>
           <ul class="space-y-2.5 text-xs text-gray-600">
             <li><a href="#" onclick="filterCategory('desk'); return false;" class="hover:text-sageText transition">Aesthetic Desk Setup</a></li>
+            <li><a href="#" onclick="filterCategory('smart'); return false;" class="hover:text-sageText transition">Smart Home & Office Gadgets</a></li>
             <li><a href="#" onclick="filterCategory('under50'); return false;" class="hover:text-sageText transition">Cool Tech Under $50</a></li>
-            <li><a href="#" class="hover:text-sageText transition">Creator & Vlogging</a></li>
-            <li><a href="#" class="hover:text-sageText transition">Smart Home & Office</a></li>
           </ul>
         </div>
 
@@ -201,13 +203,15 @@
     </div>
   </footer>
 
-  <!-- Safe JavaScript -->
+  <!-- Complete Product Database & Interactive Script -->
   <script>
     const products = [
+      // Kategori: Aesthetic Desk Setup
       {
         id: 1,
         title: "BenQ ScreenBar Halo 2 LED Monitor Light Bar - Wireless Controller, Backlight, Motion Sensor",
         category: "desk",
+        categoryLabel: "Aesthetic Desk Setup",
         rawPrice: 209.99,
         price: "$209.99",
         badges: [
@@ -222,6 +226,7 @@
         id: 2,
         title: "Govee Smart Light Bar, RGBICWW TV Lights for Living Room, Gaming, Black",
         category: "desk",
+        categoryLabel: "Aesthetic Desk Setup",
         rawPrice: 54.99,
         price: "$54.99",
         badges: [
@@ -234,7 +239,8 @@
       {
         id: 3,
         title: "Nordik Leather Desk Mat - Pebble Black - Large Leather Desk Pad 35x17 in",
-        category: "under50",
+        category: "desk",
+        categoryLabel: "Aesthetic Desk Setup",
         rawPrice: 22.97,
         price: "$22.97",
         badges: [
@@ -248,6 +254,7 @@
         id: 4,
         title: "Logitech MX Master 3S Bluetooth Wireless Mouse No Receiver - Graphite",
         category: "desk",
+        categoryLabel: "Aesthetic Desk Setup",
         rawPrice: 79.80,
         price: "$79.80",
         badges: [
@@ -262,6 +269,7 @@
         id: 5,
         title: "Logitech POP Keys Wireless Mechanical Keyboard with Emoji Keys - Rose",
         category: "desk",
+        categoryLabel: "Aesthetic Desk Setup",
         rawPrice: 76.99,
         price: "$76.99",
         badges: [
@@ -269,6 +277,82 @@
         ],
         image: "./pop-keys.jpg",
         link: "https://www.amazon.com/dp/B09DVLTFJR",
+        rating: "4.6"
+      },
+
+      // Kategori: Smart Home & Office Gadgets
+      {
+        id: 6,
+        title: "Govee Smart TV LED Backlight Strip, RGBIC for 40-50inch TVs",
+        category: "smart",
+        categoryLabel: "Smart Home & Office",
+        rawPrice: 16.99,
+        price: "$16.99",
+        badges: [
+          { label: "⚡ 15% OFF", color: "bg-emerald-50 text-emerald-800 border-emerald-200" },
+          { label: "⚡ Under $50", color: "bg-sageAccent text-sageText border-sageText/20" }
+        ],
+        image: "./govee-tv-backlight.jpg",
+        link: "https://link.amazon/B0fpiXruV",
+        rating: "4.6"
+      },
+      {
+        id: 7,
+        title: "Anker MagSafe Charger Compatible, MagGo 3-in-1 Qi2 15W Charging Station",
+        category: "smart",
+        categoryLabel: "Smart Home & Office",
+        rawPrice: 62.99,
+        price: "$62.99",
+        badges: [
+          { label: "✨ Top Pick", color: "bg-sageAccent text-sageText border-sageText/20" }
+        ],
+        image: "./anker-magsafe-charger.jpg",
+        link: "https://link.amazon/B04nglLKC",
+        rating: "4.5"
+      },
+      {
+        id: 8,
+        title: "Quntis Computer Monitor Lamp, Screen Monitor Light Bar for Eye Caring, USB Reading LED Task Lamp",
+        category: "smart",
+        categoryLabel: "Smart Home & Office",
+        rawPrice: 39.95,
+        price: "$39.95",
+        badges: [
+          { label: "🔥 Best seller", color: "bg-amberAccent text-amberText border-amberText/20" },
+          { label: "⚡ Under $50", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
+        ],
+        image: "./quntis-monitor-lamp.jpg",
+        link: "https://link.amazon/B0asIJRUk",
+        rating: "4.6"
+      },
+      {
+        id: 9,
+        title: "Govee Smart Plug with Energy Monitoring, WiFi Bluetooth Outlet, 2 Pack",
+        category: "smart",
+        categoryLabel: "Smart Home & Office",
+        rawPrice: 26.99,
+        price: "$26.99",
+        badges: [
+          { label: "📌 Sponsored", color: "bg-stone-100 text-stone-700 border-stone-300" },
+          { label: "⚡ Under $50", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
+        ],
+        image: "./govee-smart-plug.jpg",
+        link: "https://link.amazon/B01fdV7lo",
+        rating: "4.6"
+      },
+      {
+        id: 10,
+        title: "Levoit Air Purifiers for Bedroom Home Pets Dorm Room, Small Air Purifiers",
+        category: "smart",
+        categoryLabel: "Smart Home & Office",
+        rawPrice: 37.23,
+        price: "$37.23",
+        badges: [
+          { label: "🔥 Best seller", color: "bg-amberAccent text-amberText border-amberText/20" },
+          { label: "⚡ Under $50", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
+        ],
+        image: "./levoit-air-purifiers.jpg",
+        link: "https://link.amazon/B07VPomVw",
         rating: "4.6"
       }
     ];
@@ -309,7 +393,7 @@
             </div>
 
             <div class="flex items-center justify-between mb-1.5">
-              <span class="text-[10px] font-bold uppercase tracking-wider text-sageText">Aesthetic Desk Setup</span>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-sageText">${item.categoryLabel}</span>
               <span class="text-xs text-amber-500 font-bold flex items-center gap-1">
                 <i class="fa-solid fa-star text-[10px]"></i> ${item.rating}
               </span>
@@ -354,7 +438,9 @@
       const search = document.getElementById('searchInput')?.value.toLowerCase() || '';
       let filtered = [...products];
 
-      if (currentCategory !== 'all') {
+      if (currentCategory === 'under50') {
+        filtered = filtered.filter(p => p.rawPrice < 50);
+      } else if (currentCategory !== 'all') {
         filtered = filtered.filter(p => p.category === currentCategory);
       }
 
@@ -369,7 +455,9 @@
       const sortVal = document.getElementById('sortSelect')?.value;
       let items = [...products];
 
-      if (currentCategory !== 'all') {
+      if (currentCategory === 'under50') {
+        items = items.filter(p => p.rawPrice < 50);
+      } else if (currentCategory !== 'all') {
         items = items.filter(p => p.category === currentCategory);
       }
 
@@ -387,14 +475,17 @@
     function updateCounts() {
       const allCount = products.length;
       const deskCount = products.filter(p => p.category === 'desk').length;
-      const under50Count = products.filter(p => p.category === 'under50').length;
+      const smartCount = products.filter(p => p.category === 'smart').length;
+      const under50Count = products.filter(p => p.rawPrice < 50).length;
 
       const elAll = document.getElementById('count-all');
       const elDesk = document.getElementById('count-desk');
+      const elSmart = document.getElementById('count-smart');
       const elUnder = document.getElementById('count-under50');
 
       if (elAll) elAll.innerText = allCount;
       if (elDesk) elDesk.innerText = deskCount;
+      if (elSmart) elSmart.innerText = smartCount;
       if (elUnder) elUnder.innerText = under50Count;
     }
 
@@ -422,7 +513,7 @@
 
     document.getElementById('searchInput')?.addEventListener('input', applyFilters);
 
-    // Initial load
+    // Initial Load
     renderProducts(products);
     updateCounts();
   </script>
