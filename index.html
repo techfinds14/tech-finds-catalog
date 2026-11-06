@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tech Finds & Essentials</title>
+  <title>Tech Finds & Essentials | Premium Technology Gadgets & Smart Home Setup</title>
+  <meta name="description" content="Discover curated technology gadgets, aesthetic desk setup essentials, smart home tools, and creator vlogging gear for every budget. Tested and trusted Amazon picks.">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <script>
@@ -11,15 +12,16 @@
       theme: {
         extend: {
           colors: {
-            warmBg: '#FAF8F5',
-            warmCard: '#FFFFFF',
-            warmBorder: '#EFECE6',
+            creamBg: '#FAF8F5',
+            creamCard: '#FFFFFF',
+            creamBorder: '#EFECE6',
+            pinkHighlight: '#DB2777',
+            pinkSoft: '#FDF2F8',
+            pinkText: '#9D174D',
             sageAccent: '#E8F0EC',
             sageText: '#2D4A3E',
             amberAccent: '#FCEFE3',
-            amberText: '#8A4B10',
-            roseAccent: '#FDF2F8',
-            roseText: '#9D174D'
+            amberText: '#8A4B10'
           }
         }
       }
@@ -27,193 +29,329 @@
   </script>
   <style>
     html { scroll-behavior: smooth; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
-<body class="bg-[#FAF8F5] text-gray-800 font-sans min-h-screen flex flex-col justify-between selection:bg-sageText selection:text-white">
+<body class="bg-[#FAF8F5] text-gray-800 font-sans min-h-screen flex flex-col justify-between selection:bg-pinkHighlight selection:text-white">
 
-  <!-- Header & Search -->
-  <header class="sticky top-0 z-50 bg-[#FAF8F5]/90 backdrop-blur-md border-b border-stone-200/70 px-4 py-3">
-    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-      <div class="flex items-center justify-between w-full sm:w-auto">
-        <div class="flex items-center gap-2.5">
-          <div class="w-9 h-9 rounded-xl bg-amberAccent text-amberText flex items-center justify-center font-bold text-base shadow-sm">
-            ✨
-          </div>
-          <span class="font-bold text-lg text-gray-900 tracking-tight">Tech Finds & Essentials</span>
+  <!-- Navigation Bar -->
+  <header class="sticky top-0 z-50 bg-[#FAF8F5]/95 backdrop-blur-md border-b border-stone-200/80 px-4 py-3.5">
+    <div class="max-w-6xl mx-auto flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo -->
+      <a href="#" onclick="showSection('home'); return false;" class="flex items-center gap-2.5 group">
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-pinkHighlight to-rose-400 text-white flex items-center justify-center font-bold text-lg shadow-md shadow-pink-500/20 group-hover:scale-105 transition">
+          ✨
         </div>
-        <button onclick="shareWebsite()" class="sm:hidden p-2 text-gray-600 hover:text-gray-900 bg-white border border-stone-200 rounded-lg text-xs shadow-sm" title="Share Website">
-          <i class="fa-solid fa-share-nodes"></i>
-        </button>
-      </div>
+        <div>
+          <span class="font-extrabold text-lg text-gray-900 tracking-tight block leading-none">Tech Finds</span>
+          <span class="text-[10px] font-semibold text-pinkHighlight tracking-widest uppercase">& Essentials</span>
+        </div>
+      </a>
 
-      <div class="flex items-center gap-2 w-full sm:w-auto">
-        <div class="relative flex-1 sm:w-72">
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-6 text-xs font-bold text-gray-700">
+        <a href="#" onclick="showSection('home'); return false;" class="hover:text-pinkHighlight transition">Home</a>
+        <a href="#categories-section" onclick="showSection('home');" class="hover:text-pinkHighlight transition">Categories</a>
+        <a href="#bestsellers-section" onclick="showSection('home');" class="hover:text-pinkHighlight transition">Best Sellers</a>
+        <a href="#" onclick="filterCategory('under50'); showSection('home'); return false;" class="text-emerald-700 hover:text-emerald-900 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 transition">⚡ Budget Picks</a>
+        <a href="#" onclick="showSection('blog'); return false;" class="hover:text-pinkHighlight transition">Blog & Guides</a>
+        <a href="#" onclick="openModal('aboutModal'); return false;" class="hover:text-pinkHighlight transition">About</a>
+      </nav>
+
+      <!-- Search & CMS Trigger Buttons -->
+      <div class="flex items-center gap-2">
+        <div class="relative hidden sm:block w-48 lg:w-64">
           <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
-          <input type="text" id="searchInput" placeholder="Search gear, cable, mug warmer, 4K..." 
-                 class="w-full bg-white border border-stone-200 rounded-full pl-9 pr-4 py-2 text-xs text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sageText/30 shadow-sm transition">
+          <input type="text" id="searchInput" placeholder="Search 20+ gadgets..." 
+                 class="w-full bg-white border border-stone-200 rounded-full pl-9 pr-4 py-2 text-xs text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pinkHighlight/40 shadow-sm transition">
         </div>
-        <button onclick="shareWebsite()" class="hidden sm:flex p-2 text-gray-600 hover:text-gray-900 bg-white border border-stone-200 rounded-full text-xs items-center justify-center w-9 h-9 shadow-sm" title="Share Website">
-          <i class="fa-solid fa-share-nodes"></i>
+        <button onclick="openModal('cmsModal')" class="bg-gray-900 hover:bg-pinkHighlight text-white px-3.5 py-2 rounded-full text-xs font-bold transition flex items-center gap-1.5 shadow-sm" title="CMS Admin Dashboard">
+          <i class="fa-solid fa-plus-circle"></i> <span class="hidden sm:inline">CMS</span>
         </button>
       </div>
     </div>
   </header>
 
-  <div class="max-w-5xl mx-auto px-4 w-full flex-grow">
+  <!-- MAIN CONTENT CONTAINER -->
+  <div class="max-w-6xl mx-auto px-4 w-full flex-grow">
     
-    <!-- Feature Pills Banner -->
-    <div class="mt-6 flex flex-wrap items-center justify-center sm:justify-start gap-2 text-[11px] font-medium text-gray-600">
-      <span class="inline-flex items-center gap-1.5 bg-sageAccent text-sageText border border-sageText/10 px-3 py-1 rounded-full shadow-sm">
-        <span class="w-2 h-2 rounded-full bg-sageText animate-pulse"></span> Curated Tech Catalog
-      </span>
-      <span class="inline-flex items-center gap-1.5 bg-white border border-stone-200 px-3 py-1 rounded-full shadow-sm">
-        Tested for Desk Aesthetics
-      </span>
-      <span class="inline-flex items-center gap-1.5 bg-amberAccent text-amberText border border-amberText/10 px-3 py-1 rounded-full shadow-sm">
-        Amazon Prime Eligible
-      </span>
+    <!-- SECTION: HOME -->
+    <div id="home-view" class="space-y-12">
+      
+      <!-- HERO SECTION -->
+      <section class="pt-8 pb-4 text-center md:text-left">
+        <div class="bg-gradient-to-r from-pinkSoft via-white to-amberAccent/40 rounded-3xl p-6 sm:p-10 border border-stone-200/80 shadow-sm relative overflow-hidden">
+          <div class="max-w-2xl relative z-10">
+            <span class="inline-flex items-center gap-1.5 bg-pinkHighlight text-white px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase mb-4 shadow-sm">
+              ✨ Premium Tech Curation
+            </span>
+            <h1 class="text-3xl sm:text-5xl font-black text-gray-900 tracking-tight leading-tight mb-4">
+              Create Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-pinkHighlight to-purple-600">Smart Home Dream</span>
+            </h1>
+            <p class="text-xs sm:text-base text-gray-600 leading-relaxed mb-6 font-medium">
+              Find the best tested technology gadgets, aesthetic desk setup tools, and smart home solutions tailored for every budget. Verified recommendations with direct Amazon access.
+            </p>
+            <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+              <a href="#product-grid" class="bg-gray-900 hover:bg-pinkHighlight text-white px-6 py-3 rounded-full text-xs font-extrabold transition shadow-md flex items-center gap-2">
+                Explore 20 Tech Finds <i class="fa-solid fa-arrow-down"></i>
+              </a>
+              <button onclick="filterCategory('under50')" class="bg-white hover:bg-stone-50 text-gray-900 border border-stone-200 px-6 py-3 rounded-full text-xs font-bold transition shadow-sm">
+                ⚡ Deals Under $50
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BEST PICKS BY CATEGORY SECTION -->
+      <section id="categories-section" class="pt-2">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-gray-900 tracking-tight">Best Picks By Category</h2>
+            <p class="text-xs text-gray-500">Explore hand-crafted tech lineups built for work, gaming, and lifestyle.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Category 1 -->
+          <div onclick="filterCategory('desk')" class="bg-white p-5 rounded-2xl border border-stone-200/80 hover:border-pinkHighlight/50 hover:shadow-md transition cursor-pointer group">
+            <div class="w-10 h-10 rounded-xl bg-amberAccent text-amberText flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition">🛋️</div>
+            <h3 class="font-bold text-sm text-gray-900 mb-1">Aesthetic Desk Setup</h3>
+            <p class="text-[11px] text-gray-500 mb-3">Lighting, mats & ergonomic gear</p>
+            <span class="text-xs font-extrabold text-pinkHighlight flex items-center gap-1">Browse 5 Items &rarr;</span>
+          </div>
+          <!-- Category 2 -->
+          <div onclick="filterCategory('smart')" class="bg-white p-5 rounded-2xl border border-stone-200/80 hover:border-pinkHighlight/50 hover:shadow-md transition cursor-pointer group">
+            <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition">🏠</div>
+            <h3 class="font-bold text-sm text-gray-900 mb-1">Smart Home & Office</h3>
+            <p class="text-[11px] text-gray-500 mb-3">Plugs, purifiers & smart lamps</p>
+            <span class="text-xs font-extrabold text-pinkHighlight flex items-center gap-1">Browse 5 Items &rarr;</span>
+          </div>
+          <!-- Category 3 -->
+          <div onclick="filterCategory('creator')" class="bg-white p-5 rounded-2xl border border-stone-200/80 hover:border-pinkHighlight/50 hover:shadow-md transition cursor-pointer group">
+            <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition">📹</div>
+            <h3 class="font-bold text-sm text-gray-900 mb-1">Creator & Vlogging</h3>
+            <p class="text-[11px] text-gray-500 mb-3">Microphones, gimbals & lights</p>
+            <span class="text-xs font-extrabold text-pinkHighlight flex items-center gap-1">Browse 5 Items &rarr;</span>
+          </div>
+          <!-- Category 4 -->
+          <div onclick="filterCategory('under50')" class="bg-white p-5 rounded-2xl border border-stone-200/80 hover:border-pinkHighlight/50 hover:shadow-md transition cursor-pointer group">
+            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition">⚡</div>
+            <h3 class="font-bold text-sm text-gray-900 mb-1">Cool Tech Under $50</h3>
+            <p class="text-[11px] text-gray-500 mb-3">Organizers, warmers & tools</p>
+            <span class="text-xs font-extrabold text-pinkHighlight flex items-center gap-1">Browse 12 Items &rarr;</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOP PICKS & BEST SELLER THIS MONTH SECTION -->
+      <section id="bestsellers-section" class="pt-2">
+        <div class="bg-stone-900 text-white rounded-3xl p-6 sm:p-8 shadow-lg">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-2">
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-widest text-pink-400">Monthly Top 5 Spotlight</span>
+              <h2 class="text-xl sm:text-2xl font-extrabold tracking-tight">Top Picks & Best Seller This Month</h2>
+            </div>
+            <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 px-3 py-1 rounded-full text-xs font-bold">🔥 High Conversion List</span>
+          </div>
+          <div id="bestseller-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4"></div>
+        </div>
+      </section>
+
+      <!-- MAIN FEATURED PRODUCTS CATALOG -->
+      <section class="pt-4">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-stone-200 pb-4 mb-6">
+          <div>
+            <h2 class="text-2xl font-extrabold text-gray-900 tracking-tight">Featured Products Catalog</h2>
+            <p class="text-xs text-gray-500">Filter by category or budget to inspect product details and Amazon prices.</p>
+          </div>
+
+          <!-- Category Filter Tabs -->
+          <div class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar" id="categoryTabs">
+            <button onclick="filterCategory('all')" id="tab-all" class="cat-tab bg-pinkHighlight text-white font-bold px-4 py-2 rounded-full text-xs shrink-0 shadow-sm">All (20)</button>
+            <button onclick="filterCategory('desk')" id="tab-desk" class="cat-tab bg-white text-gray-700 hover:text-gray-900 border border-stone-200 px-4 py-2 rounded-full text-xs shrink-0">Desk Setup (5)</button>
+            <button onclick="filterCategory('smart')" id="tab-smart" class="cat-tab bg-white text-gray-700 hover:text-gray-900 border border-stone-200 px-4 py-2 rounded-full text-xs shrink-0">Smart Home (5)</button>
+            <button onclick="filterCategory('creator')" id="tab-creator" class="cat-tab bg-white text-gray-700 hover:text-gray-900 border border-stone-200 px-4 py-2 rounded-full text-xs shrink-0">Creator Gear (5)</button>
+            <button onclick="filterCategory('under50')" id="tab-under50" class="cat-tab bg-white text-gray-700 hover:text-gray-900 border border-stone-200 px-4 py-2 rounded-full text-xs shrink-0">Under $50 (12)</button>
+          </div>
+
+          <!-- Sort Select -->
+          <div class="shrink-0">
+            <select id="sortSelect" onchange="sortProducts()" class="bg-white text-gray-700 border border-stone-200 rounded-full px-3.5 py-2 text-xs font-medium focus:outline-none cursor-pointer shadow-sm">
+              <option value="featured">⇅ Sort: Featured</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Highest Rated</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Product Cards Grid -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </section>
+
     </div>
 
-    <!-- Hero Title Section -->
-    <section class="pt-6 pb-4 text-left">
-      <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-2">Tech Finds & Essentials</h1>
-      <p class="text-xs sm:text-sm text-gray-600 max-w-2xl leading-relaxed">
-        Curated collection of the best tech gadgets, desk setup gear, and smart tools for remote professionals & creators.
-      </p>
-
-      <!-- Quick Browse Bar -->
-      <div class="mt-5 flex flex-wrap items-center gap-2">
-        <span class="text-xs font-bold text-gray-500 uppercase tracking-wider mr-1">Quick Browse:</span>
-        <button onclick="filterCategory('all')" class="bg-sageText text-white px-3.5 py-1.5 rounded-full text-xs font-medium hover:bg-stone-800 transition shadow-sm flex items-center gap-1.5">
-          ✨ Top Picks
-        </button>
-        <button onclick="filterCategory('under50')" class="bg-emerald-50 text-emerald-800 border border-emerald-200 px-3.5 py-1.5 rounded-full text-xs font-medium hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5">
-          ⚡ Cool Tech Under $50
-        </button>
-        <button onclick="filterCategory('desk')" class="bg-amberAccent text-amberText border border-amberText/20 px-3.5 py-1.5 rounded-full text-xs font-medium hover:bg-amberText hover:text-white transition flex items-center gap-1.5">
-          🛋️ Aesthetic Desk Setup
-        </button>
-        <button onclick="filterCategory('creator')" class="bg-purple-50 text-purple-800 border border-purple-200 px-3.5 py-1.5 rounded-full text-xs font-medium hover:bg-purple-700 hover:text-white transition flex items-center gap-1.5">
-          📹 Creator Gear
-        </button>
+    <!-- SECTION: BLOG & ARTICLES (PINTEREST LANDING DESTINATION) -->
+    <div id="blog-view" class="hidden space-y-8 pt-6">
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <span class="bg-pinkSoft text-pinkText text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Buying Guides & Reviews</span>
+        <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight mt-2">Tech Finds & Essentials Blog</h1>
+        <p class="text-xs sm:text-sm text-gray-600">In-depth product roundups and setup guides designed for Pinterest creators & tech lovers.</p>
       </div>
-    </section>
 
-    <!-- Main Filters & Counts -->
-    <section class="mt-6 mb-4">
-      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-stone-200/80 pb-4">
-        
-        <!-- Category Tabs -->
-        <div class="flex items-center gap-2 overflow-x-auto pb-1 max-w-full no-scrollbar" id="categoryTabs">
-          <button onclick="filterCategory('all')" id="tab-all" class="cat-tab bg-sageText text-white font-bold px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0 shadow-sm">
-            All <span id="count-all" class="bg-white/20 text-white px-1.5 py-0.5 rounded-md text-[10px]">20</span>
-          </button>
-          <button onclick="filterCategory('under50')" id="tab-under50" class="cat-tab bg-white text-gray-700 hover:text-gray-900 border border-stone-200 px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0">
-            Cool Tech Under $50 <span id="count-under50" class="bg-stone-100 text-gray-600 px-1.5 py-0.5 rounded-md text-[10px]">12</span>
-          </button>
-          <button onclick="filterCategory('desk')" id="tab-desk" class="cat-tab bg-white text-gray-700 hover:text-gray-900 border border-stone-200 px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0">
-            Aesthetic Desk Setup <span id="count-desk" class="bg-stone-100 text-gray-600 px-1.5 py-0.5 rounded-md text-[10px]">5</span>
-          </button>
-          <button onclick="filterCategory('smart')" id="tab-smart" class="cat-tab bg-white text-gray-700 hover:text-gray-900 border border-stone-200 px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0">
-            Smart Home & Office <span id="count-smart" class="bg-stone-100 text-gray-600 px-1.5 py-0.5 rounded-md text-[10px]">5</span>
-          </button>
-          <button onclick="filterCategory('creator')" id="tab-creator" class="cat-tab bg-white text-gray-700 hover:text-gray-900 border border-stone-200 px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0">
-            Creator & Vlogging <span id="count-creator" class="bg-stone-100 text-gray-600 px-1.5 py-0.5 rounded-md text-[10px]">5</span>
-          </button>
-        </div>
+      <!-- Blog List Grid -->
+      <div id="blog-list" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
 
-        <!-- Sort Control Dropdown -->
-        <div class="flex items-center gap-2 ml-auto">
-          <select id="sortSelect" onchange="sortProducts()" class="bg-white text-gray-700 border border-stone-200 rounded-full px-3 py-2 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-sageText/30 cursor-pointer shadow-sm">
-            <option value="featured">⇅ Sort: Featured</option>
-            <option value="price-low">Price: Low to High</option>
-            <option value="price-high">Price: High to Low</option>
-            <option value="rating">Highest Rated</option>
-          </select>
-        </div>
-
+      <!-- Single Blog Post Detail Reader (Hidden by default) -->
+      <div id="blog-detail" class="hidden bg-white rounded-3xl p-6 sm:p-10 border border-stone-200 shadow-sm max-w-3xl mx-auto space-y-6">
+        <button onclick="hideBlogDetail()" class="text-xs font-bold text-gray-600 hover:text-pinkHighlight flex items-center gap-1.5">&larr; Back to All Articles</button>
+        <div id="blog-detail-content"></div>
       </div>
-    </section>
-
-    <!-- Product Display Grid -->
-    <main class="my-6">
-      <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-    </main>
+    </div>
 
   </div>
 
-  <!-- Footer Section -->
-  <footer class="mt-16 bg-[#F4F0EA] border-t border-stone-200/80 pt-12 pb-8 px-4">
-    <div class="max-w-5xl mx-auto">
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-        <div class="space-y-4">
-          <div class="flex items-center gap-2.5">
-            <div class="w-8 h-8 rounded-xl bg-amberAccent text-amberText flex items-center justify-center font-bold text-sm shadow-sm">
-              ✨
-            </div>
-            <span class="font-bold text-base text-gray-900">Tech Finds & Essentials</span>
+  <!-- MODAL: ABOUT PAGE METHODOLOGY -->
+  <div id="aboutModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 border border-stone-200 shadow-xl space-y-4">
+      <div class="flex items-center justify-between border-b border-stone-100 pb-3">
+        <h3 class="font-extrabold text-lg text-gray-900">About Tech Finds & Essentials</h3>
+        <button onclick="closeModal('aboutModal')" class="text-gray-400 hover:text-gray-700 text-lg">&times;</button>
+      </div>
+      <p class="text-xs text-gray-600 leading-relaxed">
+        <strong>Tech Finds & Essentials</strong> is an independent product discovery platform created for remote professionals, desk setup enthusiasts, and smart home builders.
+      </p>
+      <p class="text-xs text-gray-600 leading-relaxed">
+        We test, evaluate, and curate only top-rated technology products from techaustere marketplaces. Our mission is to save you hours of research by recommending gear with verified customer ratings and real utility.
+      </p>
+      <div class="bg-pinkSoft p-4 rounded-2xl border border-pinkHighlight/20">
+        <p class="text-[11px] text-pinkText font-semibold">✨ Trusted Guarantee: Every product link directs to official Amazon sellers with buyer protections and live pricing.</p>
+      </div>
+      <button onclick="closeModal('aboutModal')" class="w-full bg-gray-900 hover:bg-pinkHighlight text-white py-2.5 rounded-full text-xs font-bold transition">Close Window</button>
+    </div>
+  </div>
+
+  <!-- MODAL: CMS ADMIN CONTENT DASHBOARD -->
+  <div id="cmsModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 border border-stone-200 shadow-xl space-y-4 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-stone-100 pb-3">
+        <div class="flex items-center gap-2">
+          <span class="w-7 h-7 rounded-lg bg-pinkHighlight text-white flex items-center justify-center text-xs font-bold">CMS</span>
+          <h3 class="font-extrabold text-lg text-gray-900">Content Management System</h3>
+        </div>
+        <button onclick="closeModal('cmsModal')" class="text-gray-400 hover:text-gray-700 text-lg">&times;</button>
+      </div>
+
+      <p class="text-xs text-gray-500">Easily add new Amazon affiliate product cards or blog posts without redesigning any code.</p>
+
+      <form id="cmsForm" onsubmit="handleCMSAdd(event)" class="space-y-3">
+        <div>
+          <label class="block text-[11px] font-bold text-gray-700 uppercase mb-1">Content Type</label>
+          <select id="cmsType" class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs font-medium">
+            <option value="product">New Amazon Product Card</option>
+            <option value="blog">New Blog Article</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold text-gray-700 uppercase mb-1">Title / Product Name</label>
+          <input type="text" id="cmsTitle" required placeholder="e.g. Anker Wireless Charging Pad" class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs">
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold text-gray-700 uppercase mb-1">Category / Topic</label>
+          <select id="cmsCategory" class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs font-medium">
+            <option value="desk">Aesthetic Desk Setup</option>
+            <option value="smart">Smart Home & Office</option>
+            <option value="creator">Creator & Vlogging</option>
+            <option value="under50">Cool Tech Under $50</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-bold text-gray-700 uppercase mb-1">Price ($)</label>
+            <input type="text" id="cmsPrice" placeholder="e.g. 29.99" class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs">
           </div>
-          <p class="text-xs text-gray-600 leading-relaxed">
-            Curated gear guides for remote professionals, developers, and visual content creators. We research, test, and hand-pick the cleanest desk aesthetic essentials and smart gadgets.
+          <div>
+            <label class="block text-[11px] font-bold text-gray-700 uppercase mb-1">Rating (1-5)</label>
+            <input type="text" id="cmsRating" placeholder="e.g. 4.7" class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs">
+          </div>
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold text-gray-700 uppercase mb-1">Image Filename / URL</label>
+          <input type="text" id="cmsImage" required placeholder="e.g. ./anker-charger.jpg" class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs">
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold text-gray-700 uppercase mb-1">Amazon Affiliate Link URL</label>
+          <input type="text" id="cmsLink" required placeholder="https://www.amazon.com/dp/..." class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs">
+        </div>
+        <button type="submit" class="w-full bg-pinkHighlight hover:bg-rose-700 text-white py-3 rounded-full text-xs font-extrabold shadow-md transition">Publish Content to Website</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- SITE-WIDE FOOTER WITH MANDATORY AMAZON DISCLOSURE BANNER -->
+  <footer class="mt-20 bg-[#F4F0EA] border-t border-stone-200/80 pt-12 pb-8 px-4">
+    <div class="max-w-6xl mx-auto space-y-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="space-y-3 md:col-span-2">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-xl bg-pinkHighlight text-white flex items-center justify-center font-bold text-sm">✨</div>
+            <span class="font-extrabold text-base text-gray-900">Tech Finds & Essentials</span>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed max-w-sm">
+            Curated technology guides for remote professionals, developers, and creators. We research and hand-pick the cleanest desk setup gear and smart home tools.
           </p>
           <div class="flex items-center gap-2 pt-2">
-            <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white border border-stone-200 text-gray-600 hover:text-red-600 flex items-center justify-center text-sm shadow-sm transition" title="Pinterest">
-              <i class="fa-brands fa-pinterest-p"></i>
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white border border-stone-200 text-gray-600 hover:text-pink-600 flex items-center justify-center text-sm shadow-sm transition" title="Instagram">
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white border border-stone-200 text-gray-600 hover:text-red-600 flex items-center justify-center text-sm shadow-sm transition" title="YouTube">
-              <i class="fa-brands fa-youtube"></i>
-            </a>
+            <a href="https://pinterest.com" target="_blank" class="w-8 h-8 rounded-full bg-white text-gray-600 hover:text-pinkHighlight flex items-center justify-center text-xs shadow-sm transition"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="https://instagram.com" target="_blank" class="w-8 h-8 rounded-full bg-white text-gray-600 hover:text-pinkHighlight flex items-center justify-center text-xs shadow-sm transition"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://youtube.com" target="_blank" class="w-8 h-8 rounded-full bg-white text-gray-600 hover:text-pinkHighlight flex items-center justify-center text-xs shadow-sm transition"><i class="fa-brands fa-youtube"></i></a>
           </div>
         </div>
 
         <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-gray-900 mb-4">Collections</h4>
-          <ul class="space-y-2.5 text-xs text-gray-600">
-            <li><a href="#" onclick="filterCategory('under50'); return false;" class="hover:text-sageText transition">Cool Tech Under $50</a></li>
-            <li><a href="#" onclick="filterCategory('desk'); return false;" class="hover:text-sageText transition">Aesthetic Desk Setup</a></li>
-            <li><a href="#" onclick="filterCategory('smart'); return false;" class="hover:text-sageText transition">Smart Home & Office Gadgets</a></li>
-            <li><a href="#" onclick="filterCategory('creator'); return false;" class="hover:text-sageText transition">Creator & Vlogging Gear</a></li>
+          <h4 class="text-xs font-extrabold uppercase tracking-wider text-gray-900 mb-3">Categories</h4>
+          <ul class="space-y-2 text-xs text-gray-600 font-medium">
+            <li><a href="#" onclick="filterCategory('desk'); showSection('home'); return false;" class="hover:text-pinkHighlight">Aesthetic Desk Setup</a></li>
+            <li><a href="#" onclick="filterCategory('smart'); showSection('home'); return false;" class="hover:text-pinkHighlight">Smart Home & Office</a></li>
+            <li><a href="#" onclick="filterCategory('creator'); showSection('home'); return false;" class="hover:text-pinkHighlight">Creator & Vlogging Gear</a></li>
+            <li><a href="#" onclick="filterCategory('under50'); showSection('home'); return false;" class="hover:text-pinkHighlight">Cool Tech Under $50</a></li>
           </ul>
         </div>
 
         <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-gray-900 mb-4">Transparency</h4>
-          <p class="text-xs text-gray-600 leading-relaxed mb-4">
-            Prices and availability are subject to change. Amazon and the Amazon logo are trademarks of Amazon.com, Inc. or its affiliates.
-          </p>
-          <button onclick="scrollToTop()" class="inline-flex items-center gap-2 text-xs text-gray-700 hover:text-gray-900 bg-white border border-stone-200 px-3.5 py-2 rounded-full shadow-sm transition cursor-pointer">
-            <i class="fa-solid fa-arrow-up"></i> Back to Top
-          </button>
+          <h4 class="text-xs font-extrabold uppercase tracking-wider text-gray-900 mb-3">Navigation</h4>
+          <ul class="space-y-2 text-xs text-gray-600 font-medium">
+            <li><a href="#" onclick="showSection('home'); return false;" class="hover:text-pinkHighlight">Home Page</a></li>
+            <li><a href="#" onclick="showSection('blog'); return false;" class="hover:text-pinkHighlight">Blog & Pinterest Guides</a></li>
+            <li><a href="#" onclick="openModal('aboutModal'); return false;" class="hover:text-pinkHighlight">About Methodology</a></li>
+            <li><button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="text-pinkHighlight hover:underline text-left">&uarr; Back to Top</button></li>
+          </ul>
         </div>
       </div>
 
-      <!-- Amazon Associate Disclosure -->
-      <div class="bg-white border border-amber-200/80 rounded-2xl p-4 sm:p-5 mb-8 flex gap-3.5 items-start shadow-sm">
-        <div class="text-amberText text-base mt-0.5">
-          <i class="fa-solid fa-circle-info"></i>
-        </div>
+      <!-- MANDATORY AMAZON ASSOCIATE DISCLOSURE NOTE BANNER -->
+      <div class="bg-white border border-amber-200 rounded-2xl p-4 sm:p-5 flex gap-3.5 items-start shadow-sm">
+        <div class="text-amber-600 text-base mt-0.5"><i class="fa-solid fa-circle-info"></i></div>
         <div class="text-xs text-gray-600 leading-relaxed">
-          <h5 class="font-bold text-gray-900 mb-1">Amazon Associate Program Disclosure</h5>
-          As an Amazon Associate, I earn from qualifying purchases at no extra cost to you. When you click our links and purchase items, we may receive a small commission that helps support our independent gear reviews and curated tech lists.
+          <h5 class="font-bold text-gray-900 mb-0.5">Amazon Associate Program Disclosure</h5>
+          As an Amazon Associate I earn from qualifying purchases. When you click our links and purchase items, we may receive a small affiliate commission at no extra cost to you. Product prices and availability are accurate as of the date indicated and are subject to change.
         </div>
       </div>
 
-      <div class="border-t border-stone-200/80 pt-6 text-center text-xs text-gray-500 space-y-1">
+      <div class="border-t border-stone-200/80 pt-6 text-center text-xs text-gray-500">
         <p>&copy; 2026 Tech Finds & Essentials. All rights reserved.</p>
-        <p class="text-[11px] text-gray-400">Designed for Instagram, Pinterest & Tech Creators</p>
       </div>
-
     </div>
   </footer>
 
-  <!-- Complete Product Database & Interactive Script -->
+  <!-- JAVASCRIPT DATABASE & INTERACTIVE LOGIC -->
   <script>
+    // FULL DATABASE OF 20 AMAZON AFFILIATE PRODUCTS
     const products = [
-      // Kategori: Aesthetic Desk Setup
+      // Kategori 1: Aesthetic Desk Setup
       {
         id: 1,
         title: "BenQ ScreenBar Halo 2 LED Monitor Light Bar - Wireless Controller, Backlight, Motion Sensor",
@@ -221,13 +359,15 @@
         categoryLabel: "Aesthetic Desk Setup",
         rawPrice: 209.99,
         price: "$209.99",
+        desc: "Premium auto-dimming monitor light bar with backlight and wireless desktop controller for zero screen glare.",
         badges: [
-          { label: "✨ Top Pick", color: "bg-sageAccent text-sageText border-sageText/20" },
+          { label: "✨ Top Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" },
           { label: "🔥 Bestseller", color: "bg-amberAccent text-amberText border-amberText/20" }
         ],
         image: "./benq-lightbar.jpg",
         link: "https://www.amazon.com/dp/B0DK59YKRS",
-        rating: "4.7"
+        rating: "4.7",
+        isBestseller: true
       },
       {
         id: 2,
@@ -236,12 +376,14 @@
         categoryLabel: "Aesthetic Desk Setup",
         rawPrice: 54.99,
         price: "$54.99",
+        desc: "Dynamic ambient backlighting for monitors and desks with smart app voice control and music sync.",
         badges: [
-          { label: "✨ Top Pick", color: "bg-sageAccent text-sageText border-sageText/20" }
+          { label: "✨ Top Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./govee-lightbar.jpg",
         link: "https://www.amazon.com/dp/B096WZXKZP",
-        rating: "4.6"
+        rating: "4.6",
+        isBestseller: false
       },
       {
         id: 3,
@@ -250,12 +392,14 @@
         categoryLabel: "Aesthetic Desk Setup",
         rawPrice: 22.97,
         price: "$22.97",
+        desc: "Waterproof extended vegan leather desk pad with built-in cable organizer for clean workspaces.",
         badges: [
           { label: "⚡ Under $50", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
         ],
         image: "./nordik-deskmat.jpg",
         link: "https://www.amazon.com/dp/B086X1HZ8W",
-        rating: "4.7"
+        rating: "4.7",
+        isBestseller: false
       },
       {
         id: 4,
@@ -264,13 +408,15 @@
         categoryLabel: "Aesthetic Desk Setup",
         rawPrice: 79.80,
         price: "$79.80",
+        desc: "Ergonomic quiet performance mouse with 8K DPI tracking and MagSpeed electromagnetic scrolling.",
         badges: [
-          { label: "✨ Top Pick", color: "bg-sageAccent text-sageText border-sageText/20" },
+          { label: "✨ Top Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" },
           { label: "🔥 Bestseller", color: "bg-amberAccent text-amberText border-amberText/20" }
         ],
         image: "./mx-master-3s.jpg",
         link: "https://www.amazon.com/dp/B0FB21526X",
-        rating: "4.6"
+        rating: "4.6",
+        isBestseller: true
       },
       {
         id: 5,
@@ -279,15 +425,17 @@
         categoryLabel: "Aesthetic Desk Setup",
         rawPrice: 76.99,
         price: "$76.99",
+        desc: "Tactile mechanical typewriter-style keyboard featuring customizable emoji keys and multi-device connection.",
         badges: [
-          { label: "🌸 Soft Pink", color: "bg-roseAccent text-roseText border-roseText/20" }
+          { label: "🌸 Soft Pink", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./pop-keys.jpg",
         link: "https://www.amazon.com/dp/B09DVLTFJR",
-        rating: "4.6"
+        rating: "4.6",
+        isBestseller: false
       },
 
-      // Kategori: Smart Home & Office Gadgets
+      // Kategori 2: Smart Home & Office Gadgets
       {
         id: 6,
         title: "Govee Smart TV LED Backlight Strip, RGBIC for 40-50inch TVs",
@@ -295,13 +443,15 @@
         categoryLabel: "Smart Home & Office",
         rawPrice: 16.99,
         price: "$16.99",
+        desc: "Color-matching RGBIC ambient LED light strip with smart assistant integration.",
         badges: [
           { label: "⚡ 15% OFF", color: "bg-emerald-50 text-emerald-800 border-emerald-200" },
-          { label: "⚡ Under $50", color: "bg-sageAccent text-sageText border-sageText/20" }
+          { label: "⚡ Under $50", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./govee-tv-backlight.jpg",
         link: "https://link.amazon/B0fpiXruV",
-        rating: "4.6"
+        rating: "4.6",
+        isBestseller: false
       },
       {
         id: 7,
@@ -310,12 +460,14 @@
         categoryLabel: "Smart Home & Office",
         rawPrice: 62.99,
         price: "$62.99",
+        desc: "Ultra-compact foldable 15W Qi2 fast wireless charger for iPhone, Apple Watch, and AirPods.",
         badges: [
-          { label: "✨ Top Pick", color: "bg-sageAccent text-sageText border-sageText/20" }
+          { label: "✨ Top Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./anker-magsafe-charger.jpg",
         link: "https://link.amazon/B04nglLKC",
-        rating: "4.5"
+        rating: "4.5",
+        isBestseller: false
       },
       {
         id: 8,
@@ -324,13 +476,15 @@
         categoryLabel: "Smart Home & Office",
         rawPrice: 39.95,
         price: "$39.95",
+        desc: "Auto-dimming space-saving LED monitor lamp designed to eliminate glare during late work sessions.",
         badges: [
           { label: "🔥 Best seller", color: "bg-amberAccent text-amberText border-amberText/20" },
           { label: "⚡ Under $50", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
         ],
         image: "./quntis-monitor-lamp.jpg",
         link: "https://link.amazon/B0asIJRUk",
-        rating: "4.6"
+        rating: "4.6",
+        isBestseller: true
       },
       {
         id: 9,
@@ -339,13 +493,15 @@
         categoryLabel: "Smart Home & Office",
         rawPrice: 26.99,
         price: "$26.99",
+        desc: "Track energy consumption and automate home appliances via smartphone timers and voice control.",
         badges: [
           { label: "📌 Sponsored", color: "bg-stone-100 text-stone-700 border-stone-300" },
           { label: "⚡ Under $50", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
         ],
         image: "./govee-smart-plug.jpg",
         link: "https://link.amazon/B01fdV7lo",
-        rating: "4.6"
+        rating: "4.6",
+        isBestseller: false
       },
       {
         id: 10,
@@ -354,16 +510,18 @@
         categoryLabel: "Smart Home & Office",
         rawPrice: 37.23,
         price: "$37.23",
+        desc: "Whisper-quiet HEPA desktop air purifier removing dust, allergens, and pet dander.",
         badges: [
           { label: "🔥 Best seller", color: "bg-amberAccent text-amberText border-amberText/20" },
           { label: "⚡ Under $50", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
         ],
         image: "./levoit-air-purifiers.jpg",
         link: "https://link.amazon/B07VPomVw",
-        rating: "4.6"
+        rating: "4.6",
+        isBestseller: false
       },
 
-      // Kategori: Creator & Vlogging Gear
+      // Kategori 3: Creator & Vlogging Gear
       {
         id: 11,
         title: "ULANZI VL49 RGB Video Lights LED Camera Light with 3 Cold Shoe & 1/4 Screw",
@@ -371,13 +529,15 @@
         categoryLabel: "Creator & Vlogging",
         rawPrice: 18.95,
         price: "$18.95",
+        desc: "Portable magnetic RGB LED fill light with 2000mAh rechargeable battery for vloggers.",
         badges: [
           { label: "⚡ 37% OFF", color: "bg-emerald-50 text-emerald-800 border-emerald-200" },
-          { label: "✨ Overall Pick", color: "bg-sageAccent text-sageText border-sageText/20" }
+          { label: "✨ Overall Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./ulanzi-vl49-rgb.jpg",
         link: "https://link.amazon/B0bGvTyHv",
-        rating: "4.6"
+        rating: "4.6",
+        isBestseller: false
       },
       {
         id: 12,
@@ -386,13 +546,15 @@
         categoryLabel: "Creator & Vlogging",
         rawPrice: 21.99,
         price: "$21.99",
+        desc: "Versatile flexible octopus tripod with integrated cold shoe mount for phones and cameras.",
         badges: [
-          { label: "✨ Overall Pick", color: "bg-sageAccent text-sageText border-sageText/20" },
+          { label: "✨ Overall Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" },
           { label: "⚡ Under $50", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
         ],
         image: "./ulanzi-camera-tripod.jpg",
         link: "https://link.amazon/B0c5ErQwq",
-        rating: "4.5"
+        rating: "4.5",
+        isBestseller: false
       },
       {
         id: 13,
@@ -401,43 +563,49 @@
         categoryLabel: "Creator & Vlogging",
         rawPrice: 189.05,
         price: "$189.05",
+        desc: "Pro-grade wireless lavalier microphone system with intelligent noise cancelling & 32-bit float.",
         badges: [
-          { label: "✨ Top Pick", color: "bg-sageAccent text-sageText border-sageText/20" }
+          { label: "✨ Top Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./dji-mic2-cancelingnoise.jpg",
         link: "https://link.amazon/B03tbgBt6",
-        rating: "4.6"
+        rating: "4.6",
+        isBestseller: false
       },
       {
         id: 14,
-        title: "Hollyland Lark M2 Wireless Microphone for iPhone/Camera/Android/PC, 48kHz/24-bit High Fidelity Audio",
+        title: "Hollyland Lark M2 Wireless Microphone for iPhone/Camera/Android/PC",
         category: "creator",
         categoryLabel: "Creator & Vlogging",
         rawPrice: 89.10,
         price: "$89.10",
+        desc: "Ultra-lightweight button-sized wireless mic delivering 48kHz/24-bit hi-fi audio and 40h battery.",
         badges: [
           { label: "🔥 Best seller", color: "bg-amberAccent text-amberText border-amberText/20" }
         ],
         image: "./hollyland-lark-m2.jpg",
         link: "https://link.amazon/B01LPJike",
-        rating: "4.7"
+        rating: "4.7",
+        isBestseller: true
       },
       {
         id: 15,
-        title: "DJI Osmo Mobile 6, 3-Axis Phone Gimbal, Object Tracking, Built-in Extension Rod, Portable and Foldable",
+        title: "DJI Osmo Mobile 6, 3-Axis Phone Gimbal, Object Tracking, Built-in Extension Rod",
         category: "creator",
         categoryLabel: "Creator & Vlogging",
         rawPrice: 109.00,
         price: "$109.00",
+        desc: "Portable smartphone stabilizer gimbal with ActiveTrack 6.0 and extension rod for cinematic video.",
         badges: [
-          { label: "✨ Top Pick", color: "bg-sageAccent text-sageText border-sageText/20" }
+          { label: "✨ Top Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./dji-osmo-mobile6.jpg",
         link: "https://link.amazon/B03U2RxKt",
-        rating: "4.5"
+        rating: "4.5",
+        isBestseller: false
       },
 
-      // Kategori: Cool Tech Finds Under $50
+      // Kategori 4: Cool Tech Finds Under $50
       {
         id: 16,
         title: "Keyboard Cleaner & Laptop Cleaning Kit, All-in-1 for Computer PC, Black",
@@ -445,13 +613,15 @@
         categoryLabel: "Cool Tech Under $50",
         rawPrice: 16.13,
         price: "$16.13",
+        desc: "Multi-functional desktop electronics cleaning tool kit for mechanical keycaps and screens.",
         badges: [
           { label: "⚡ 5% OFF", color: "bg-emerald-50 text-emerald-800 border-emerald-200" },
-          { label: "✨ Overall Pick", color: "bg-sageAccent text-sageText border-sageText/20" }
+          { label: "✨ Overall Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./keyboard-cleaner-laptop.jpg",
         link: "https://link.amazon/B0iiVeD6y",
-        rating: "4.6"
+        rating: "4.6",
+        isBestseller: false
       },
       {
         id: 17,
@@ -460,43 +630,49 @@
         categoryLabel: "Cool Tech Under $50",
         rawPrice: 13.99,
         price: "$13.99",
+        desc: "Comprehensive soft brush pen and puller set to keep wireless earbuds free of debris.",
         badges: [
-          { label: "✨ Overall Pick", color: "bg-sageAccent text-sageText border-sageText/20" },
+          { label: "✨ Overall Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" },
           { label: "⚡ Under $50", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
         ],
         image: "./airpod-cleaning-kit.jpg",
         link: "https://link.amazon/B01moLFNG",
-        rating: "4.5"
+        rating: "4.5",
+        isBestseller: false
       },
       {
         id: 18,
-        title: "Coffee Mug Warmer-Fastest Heating & Highest Temperature, Coffee Cup Warmer for Desk Auto Shut Off, 4 Temp Settings",
+        title: "Coffee Mug Warmer-Fastest Heating & Highest Temperature, Auto Shut Off",
         category: "under50",
         categoryLabel: "Cool Tech Under $50",
         rawPrice: 18.99,
         price: "$18.99",
+        desc: "Smart electric cup warmer with 4 temperature settings and auto shut-off timer for desk work.",
         badges: [
           { label: "⚡ 39% OFF", color: "bg-emerald-50 text-emerald-800 border-emerald-200" },
-          { label: "✨ Overall Pick", color: "bg-sageAccent text-sageText border-sageText/20" }
+          { label: "✨ Overall Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./coffee-mug-warmer.jpg",
         link: "https://link.amazon/B0fLOrXo3",
-        rating: "4.6"
+        rating: "4.6",
+        isBestseller: true
       },
       {
         id: 19,
-        title: "UGREEN Desk Cable Organizer, Magnetic Cord Holder 6 Pack, Silicone Cable Clip with Strong Magnet",
+        title: "UGREEN Desk Cable Organizer, Magnetic Cord Holder 6 Pack, Silicone Cable Clip",
         category: "under50",
         categoryLabel: "Cool Tech Under $50",
         rawPrice: 12.99,
         price: "$12.99",
+        desc: "Strong magnetic silicone cable management clips for clean nightstand and desk charging cords.",
         badges: [
           { label: "⚡ 19% OFF", color: "bg-emerald-50 text-emerald-800 border-emerald-200" },
-          { label: "✨ Overall Pick", color: "bg-sageAccent text-sageText border-sageText/20" }
+          { label: "✨ Overall Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./ugreen-desk-cable.jpg",
         link: "https://link.amazon/B08lAlz6r",
-        rating: "4.4"
+        rating: "4.4",
+        isBestseller: false
       },
       {
         id: 20,
@@ -505,86 +681,209 @@
         categoryLabel: "Cool Tech Under $50",
         rawPrice: 9.58,
         price: "$9.58",
+        desc: "Self-adhesive wire management clamps for keeping PC and power cables untangled.",
         badges: [
           { label: "⚡ 20% OFF", color: "bg-emerald-50 text-emerald-800 border-emerald-200" },
           { label: "🏷️ Amazon's Choice", color: "bg-amberAccent text-amberText border-amberText/20" }
         ],
         image: "./8pack-cable-clips.jpg",
         link: "https://link.amazon/B0ie18YjM",
-        rating: "4.7"
+        rating: "4.7",
+        isBestseller: false
       }
     ];
+
+    // INITIAL BLOG DATABASE (PINTEREST AFFILIATE ARTICLES)
+    const blogPosts = [
+      {
+        id: 1,
+        title: "Top 5 Must-Have Aesthetic Desk Setup Essentials for 2026",
+        metaDesc: "Upgrade your workstation with the best monitor light bars, ergonomic mice, and leather pads. See top Amazon deals.",
+        category: "Aesthetic Desk Setup",
+        date: "Nov 2026",
+        image: "./benq-lightbar.jpg",
+        featuredProductIds: [1, 4, 3],
+        content: `
+          <p class="text-sm text-gray-700 leading-relaxed mb-4">Building a cozy, minimal, and functional desk setup isn't just about looks—it directly impacts your focus and daily posture. In this guide, we review the top tested tools on Amazon that combine sleek aesthetics with true utility.</p>
+          <h4 class="font-bold text-base text-gray-900 mb-2">1. Eliminate Screen Glare with BenQ ScreenBar Halo 2</h4>
+          <p class="text-sm text-gray-600 leading-relaxed mb-4">Standard desk lamps cast unwanted reflections on curved and flat monitors. The BenQ ScreenBar Halo 2 attaches directly atop your display, offering backlight diffusion and zero glare.</p>
+          <h4 class="font-bold text-base text-gray-900 mb-2">2. Ergonomic Precision: Logitech MX Master 3S</h4>
+          <p class="text-sm text-gray-600 leading-relaxed mb-4">Pairing your light bar with an ergonomic mouse like the MX Master 3S reduces wrist strain during long coding or editing sessions.</p>
+        `
+      },
+      {
+        id: 2,
+        title: "Best Smart Home Technology Gadgets Under $50",
+        metaDesc: "Build your dream smart home on a budget. Explore automated plugs, LED ambient strips, and desktop purifiers.",
+        category: "Smart Home & Office",
+        date: "Nov 2026",
+        image: "./govee-tv-backlight.jpg",
+        featuredProductIds: [6, 9, 10, 18],
+        content: `
+          <p class="text-sm text-gray-700 leading-relaxed mb-4">You don't need thousands of dollars to automate your living space. Modern WiFi accessories allow seamless app control and energy tracking under $50.</p>
+          <h4 class="font-bold text-base text-gray-900 mb-2">Smart Energy Control with Govee Plugs</h4>
+          <p class="text-sm text-gray-600 leading-relaxed mb-4">Plugging your desk gear or lamps into Govee Smart Plugs enables automated schedules and voice controls via Alexa or Google Assistant.</p>
+        `
+      }
+    ];
+
     let currentCategory = 'all';
 
+    // RENDER PRODUCT CARDS (MAIN CATALOG)
     function renderProducts(items) {
       const grid = document.getElementById('product-grid');
       if (!grid) return;
-      
+
       if (!items || items.length === 0) {
         grid.innerHTML = `
           <div class="col-span-full text-center py-12 text-gray-500">
-            <i class="fa-solid fa-box-open text-3xl mb-2"></i>
-            <p class="text-sm">No products found matching your search.</p>
-          </div>
-        `;
+            <i class="fa-solid fa-search text-3xl mb-2"></i>
+            <p class="text-sm">No tech products match your query.</p>
+          </div>`;
         return;
       }
 
       grid.innerHTML = items.map(item => `
-        <div class="bg-white rounded-2xl p-4 border border-stone-200/80 shadow-sm hover:shadow-md transition flex flex-col justify-between group">
+        <div class="bg-white rounded-3xl p-4 sm:p-5 border border-stone-200/80 shadow-sm hover:shadow-md transition flex flex-col justify-between group">
           <div>
-            <div class="relative w-full h-52 rounded-xl overflow-hidden mb-3 bg-[#FAF8F5] flex items-center justify-center p-3 border border-stone-100">
+            <!-- Image Frame -->
+            <div class="relative w-full h-52 rounded-2xl overflow-hidden mb-3.5 bg-[#FAF8F5] flex items-center justify-center p-4 border border-stone-100">
               <img src="${item.image}" alt="${item.title}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-300">
-              <div class="absolute top-2 left-2 flex flex-wrap gap-1.5 max-w-[80%]">
+              
+              <!-- Badges -->
+              <div class="absolute top-2.5 left-2.5 flex flex-wrap gap-1.5 max-w-[80%]">
                 ${item.badges.map(b => `
                   <span class="backdrop-blur-md px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${b.color} shadow-sm">
                     ${b.label}
                   </span>
                 `).join('')}
               </div>
-              <div class="absolute top-2 right-2 flex flex-col gap-1.5 opacity-90">
-                <button onclick="shareProduct('${item.title.replace(/'/g, "\\'")}', '${item.link}')" class="w-7 h-7 rounded-full bg-white/90 backdrop-blur-md text-gray-600 hover:text-gray-900 flex items-center justify-center text-[11px] shadow-sm transition" title="Share Product">
-                  <i class="fa-solid fa-share-nodes"></i>
-                </button>
-              </div>
             </div>
 
+            <!-- Category & Rating -->
             <div class="flex items-center justify-between mb-1.5">
-              <span class="text-[10px] font-bold uppercase tracking-wider text-sageText">${item.categoryLabel}</span>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-pinkText">${item.categoryLabel}</span>
               <span class="text-xs text-amber-500 font-bold flex items-center gap-1">
                 <i class="fa-solid fa-star text-[10px]"></i> ${item.rating}
               </span>
             </div>
 
-            <h3 class="font-semibold text-gray-900 text-sm mb-3 line-clamp-2 leading-snug hover:text-sageText transition" title="${item.title}">
+            <!-- Title & Short Description -->
+            <h3 class="font-extrabold text-gray-900 text-sm mb-1.5 line-clamp-2 leading-snug group-hover:text-pinkHighlight transition" title="${item.title}">
               ${item.title}
             </h3>
+            <p class="text-xs text-gray-500 mb-4 line-clamp-2 leading-relaxed">${item.desc}</p>
           </div>
 
+          <!-- Price & Bold CTA Button -->
           <div class="flex items-center justify-between pt-3 border-t border-stone-100">
-            <span class="text-base font-extrabold text-gray-900">${item.price}</span>
+            <div>
+              <span class="text-xs text-gray-400 block font-medium">Amazon Price</span>
+              <span class="text-base font-black text-gray-900">${item.price}</span>
+            </div>
             <a href="${item.link}" target="_blank" rel="noopener noreferrer" 
-               class="bg-sageText hover:bg-stone-800 text-white px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
-              Check Price <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+               class="bg-pinkHighlight hover:bg-rose-700 text-white px-4 py-2.5 rounded-full text-xs font-extrabold transition flex items-center gap-1.5 shadow-md shadow-pink-500/20">
+              View on Amazon <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
             </a>
           </div>
         </div>
       `).join('');
     }
+
+    // RENDER BLOG ARTICLES LIST
+    function renderBlogs() {
+      const list = document.getElementById('blog-list');
+      if (!list) return;
+
+      list.innerHTML = blogPosts.map(post => `
+        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+          <div>
+            <div class="w-full h-48 rounded-2xl overflow-hidden mb-4 bg-stone-100 flex items-center justify-center p-3">
+              <img src="${post.image}" alt="${post.title}" class="max-h-full max-w-full object-contain">
+            </div>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-pinkText">${post.category} &bull; ${post.date}</span>
+            <h3 class="font-extrabold text-gray-900 text-base mt-1 mb-2 leading-snug">${post.title}</h3>
+            <p class="text-xs text-gray-600 leading-relaxed mb-4">${post.metaDesc}</p>
+          </div>
+          <button onclick="openBlogDetail(${post.id})" class="bg-gray-900 hover:bg-pinkHighlight text-white px-5 py-2.5 rounded-full text-xs font-bold transition self-start flex items-center gap-2">
+            Read Full Article &rarr;
+          </button>
+        </div>
+      `).join('');
+    }
+
+    // OPEN SINGLE BLOG ARTICLE WITH EMBEDDED PRODUCT CARDS
+    function openBlogDetail(id) {
+      const post = blogPosts.find(p => p.id === id);
+      if (!post) return;
+
+      const detailContainer = document.getElementById('blog-detail-content');
+      const featuredItems = products.filter(p => post.featuredProductIds.includes(p.id));
+
+      detailContainer.innerHTML = `
+        <span class="text-xs font-bold uppercase tracking-wider text-pinkText">${post.category} &bull; ${post.date}</span>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-1 mb-4 leading-tight">${post.title}</h1>
+        <div class="w-full h-64 rounded-2xl bg-stone-100 flex items-center justify-center p-4 mb-6">
+          <img src="${post.image}" class="max-h-full max-w-full object-contain">
+        </div>
+        <div class="prose prose-sm max-w-none text-gray-700 mb-8">${post.content}</div>
+
+        <!-- Embedded Product Roundups -->
+        <div class="border-t border-stone-200 pt-6">
+          <h3 class="font-extrabold text-lg text-gray-900 mb-4">Featured Amazon Products in This Article</h3>
+          <div class="space-y-4">
+            ${featuredItems.map(item => `
+              <div class="bg-[#FAF8F5] p-4 rounded-2xl border border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                  <img src="${item.image}" class="w-16 h-16 object-contain rounded-xl bg-white p-1">
+                  <div>
+                    <h4 class="font-bold text-xs text-gray-900 line-clamp-1">${item.title}</h4>
+                    <span class="text-xs font-black text-gray-900">${item.price}</span>
+                    <span class="text-xs text-amber-500 font-bold ml-2">&star; ${item.rating}</span>
+                  </div>
+                </div>
+                <a href="${item.link}" target="_blank" class="bg-pinkHighlight hover:bg-rose-700 text-white px-4 py-2 rounded-full text-xs font-bold shrink-0 shadow-sm">
+                  View on Amazon &rarr;
+                </a>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+
+      document.getElementById('blog-list').classList.add('hidden');
+      document.getElementById('blog-detail').classList.remove('hidden');
+    }
+
+    function hideBlogDetail() {
+      document.getElementById('blog-detail').classList.add('hidden');
+      document.getElementById('blog-list').classList.remove('hidden');
+    }
+
+    // NAVIGATION CONTROLLER
+    function showSection(section) {
+      if (section === 'home') {
+        document.getElementById('home-view').classList.remove('hidden');
+        document.getElementById('blog-view').classList.add('hidden');
+      } else if (section === 'blog') {
+        document.getElementById('home-view').classList.add('hidden');
+        document.getElementById('blog-view').classList.remove('hidden');
+        hideBlogDetail();
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // FILTER & SORT LOGIC
     function filterCategory(cat) {
       currentCategory = cat;
       
       document.querySelectorAll('.cat-tab').forEach(tab => {
-        tab.className = "cat-tab bg-white text-gray-700 hover:text-gray-900 border border-stone-200 px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0";
-        const badge = tab.querySelector('span');
-        if (badge) badge.className = "bg-stone-100 text-gray-600 px-1.5 py-0.5 rounded-md text-[10px]";
+        tab.className = "cat-tab bg-white text-gray-700 hover:text-gray-900 border border-stone-200 px-4 py-2 rounded-full text-xs shrink-0";
       });
       
       const activeTab = document.getElementById(`tab-${cat}`);
       if (activeTab) {
-        activeTab.className = "cat-tab bg-sageText text-white font-bold px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0 shadow-sm";
-        const badge = activeTab.querySelector('span');
-        if (badge) badge.className = "bg-white/20 text-white px-1.5 py-0.5 rounded-md text-[10px]";
+        activeTab.className = "cat-tab bg-pinkHighlight text-white font-bold px-4 py-2 rounded-full text-xs shrink-0 shadow-sm";
       }
 
       applyFilters();
@@ -601,7 +900,7 @@
       }
 
       if (search) {
-        filtered = filtered.filter(p => p.title.toLowerCase().includes(search));
+        filtered = filtered.filter(p => p.title.toLowerCase().includes(search) || p.desc.toLowerCase().includes(search));
       }
 
       renderProducts(filtered);
@@ -626,54 +925,68 @@
       }
 
       renderProducts(items);
-          }
-    function updateCounts() {
-      const allCount = products.length;
-      const deskCount = products.filter(p => p.category === 'desk').length;
-      const smartCount = products.filter(p => p.category === 'smart').length;
-      const creatorCount = products.filter(p => p.category === 'creator').length;
-      const under50Count = products.filter(p => p.rawPrice < 50).length;
-
-      const elAll = document.getElementById('count-all');
-      const elDesk = document.getElementById('count-desk');
-      const elSmart = document.getElementById('count-smart');
-      const elCreator = document.getElementById('count-creator');
-      const elUnder = document.getElementById('count-under50');
-
-      if (elAll) elAll.innerText = allCount;
-      if (elDesk) elDesk.innerText = deskCount;
-      if (elSmart) elSmart.innerText = smartCount;
-      if (elCreator) elCreator.innerText = creatorCount;
-      if (elUnder) elUnder.innerText = under50Count;
     }
 
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    // CMS FORM SUBMIT HANDLER
+    function handleCMSAdd(event) {
+      event.preventDefault();
+      const type = document.getElementById('cmsType').value;
+      const title = document.getElementById('cmsTitle').value;
+      const category = document.getElementById('cmsCategory').value;
+      const price = document.getElementById('cmsPrice').value || "19.99";
+      const rawPrice = parseFloat(price.replace('$', '')) || 19.99;
+      const rating = document.getElementById('cmsRating').value || "4.6";
+      const image = document.getElementById('cmsImage').value;
+      const link = document.getElementById('cmsLink').value;
 
-    function shareWebsite() {
-      if (navigator.share) {
-        navigator.share({ title: 'Tech Finds & Essentials', url: window.location.href });
+      if (type === 'product') {
+        const newProd = {
+          id: products.length + 1,
+          title: title,
+          category: category,
+          categoryLabel: category === 'desk' ? 'Aesthetic Desk Setup' : category === 'smart' ? 'Smart Home' : category === 'creator' ? 'Creator Gear' : 'Budget Pick',
+          rawPrice: rawPrice,
+          price: `$${rawPrice.toFixed(2)}`,
+          desc: "Newly added technology product recommendation.",
+          badges: [{ label: "✨ New Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }],
+          image: image,
+          link: link,
+          rating: rating,
+          isBestseller: false
+        };
+        products.unshift(newProd);
+        applyFilters();
+        alert('✅ New Amazon product card published successfully!');
       } else {
-        navigator.clipboard?.writeText(window.location.href);
-        alert('Website URL copied!');
+        const newBlog = {
+          id: blogPosts.length + 1,
+          title: title,
+          metaDesc: title + " - Check out the latest Amazon deals.",
+          category: "Featured Roundup",
+          date: "Just Now",
+          image: image,
+          featuredProductIds: [1, 2],
+          content: `<p class="text-sm text-gray-700 leading-relaxed mb-4">${title} brings a new level of efficiency to your modern desk setup.</p>`
+        };
+        blogPosts.unshift(newBlog);
+        renderBlogs();
+        alert('✅ New blog article published to Pinterest landing!');
       }
+
+      closeModal('cmsModal');
     }
 
-    function shareProduct(title, link) {
-      if (navigator.share) {
-        navigator.share({ title: title, url: link });
-      } else {
-        navigator.clipboard?.writeText(link);
-        alert('Product link copied!');
-      }
-    }
+    // MODAL HELPERS
+    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
 
+    // INITIAL LOAD
     document.getElementById('searchInput')?.addEventListener('input', applyFilters);
-
-    // Initial Load
-    renderProducts(products);
-    updateCounts();
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProducts(products);
+      renderBestsellers();
+      renderBlogs();
+    });
   </script>
 </body>
 </html>
