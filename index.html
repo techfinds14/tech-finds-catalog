@@ -148,7 +148,6 @@
         <div class="bg-gradient-to-r from-pinkSoft via-white to-amberAccent/40 rounded-3xl p-6 sm:p-10 border border-stone-200/80 shadow-sm relative overflow-hidden">
           <div class="max-w-2xl relative z-10">
             
-            <!-- BADGE AVATAR DENGAN HANDPICKED ESSENTIALS & CURATED TECHNOLOGY GADGETS -->
             <div class="inline-flex items-center gap-2.5 bg-white/90 backdrop-blur border border-stone-200/80 px-3.5 py-2 rounded-2xl shadow-sm mb-4">
               <img src="./profile.jpg" alt="Curator" 
                    onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Tech+Finds&background=DB2777&color=fff';" 
@@ -160,12 +159,10 @@
               <span class="text-[9px] bg-pinkSoft text-pinkText px-2 py-0.5 rounded-full font-extrabold uppercase ml-1">VERIFIED</span>
             </div>
 
-            <!-- HEADLINE UTAMA (GAMBAR 2) -->
             <h1 class="text-3xl sm:text-5xl font-black text-gray-900 tracking-tight leading-tight mb-3">
               Create Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-pinkHighlight to-purple-600">Smart Home Dream</span>
             </h1>
 
-            <!-- SUBHEADLINE UTAMA (GAMBAR 2) -->
             <p class="text-xs sm:text-base text-gray-600 leading-relaxed mb-6 font-medium">
               Handpicked, tested technology gadgets designed for aesthetic spaces, daily productivity, and every budget.
             </p>
@@ -179,7 +176,6 @@
               </button>
             </div>
 
-            <!-- TRUST INDICATORS (GAMBAR 3) DIBAWAH DEALS UNDER $50 -->
             <div class="pt-4 border-t border-stone-200/60 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 text-xs font-semibold text-stone-700">
               <div class="flex items-center gap-2">
                 <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-[10px]">
@@ -384,7 +380,7 @@
 
   </div>
 
-  <!-- MODAL: PRODUCT PREVIEW POPUP (SESUAI GAMBAR 2 & GAMBAR 3) -->
+  <!-- MODAL: PRODUCT PREVIEW POPUP -->
   <div id="productPreviewModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-5 sm:p-6 border border-stone-200 shadow-2xl relative space-y-4">
       
@@ -396,10 +392,9 @@
         <img id="modalProductImg" src="" alt="Product Preview" class="max-h-full max-w-full object-contain">
       </div>
 
-      <!-- Kategori + ASIN -->
+      <!-- Kategori Produk -->
       <div class="flex items-center justify-between text-xs font-semibold">
         <span id="modalProductCategory" class="text-pinkHighlight font-bold"></span>
-        <span id="modalProductAsin" class="text-stone-400"></span>
       </div>
 
       <!-- Judul Produk Amazon -->
@@ -437,14 +432,14 @@
       <!-- Pill Tags Feature -->
       <div id="modalProductFeatures" class="flex flex-wrap gap-1.5 pt-1"></div>
 
-      <!-- Action Button & Affiliate Tag User ID -->
+      <!-- Action Button & Affiliate Tag User ID (HANYA MENAMPILKAN TULISAN AFFILIATE TAG ID) -->
       <div class="pt-3 border-t border-stone-100 space-y-2">
         <a id="modalProductLink" href="#" target="_blank" rel="noopener noreferrer" 
            class="w-full bg-gray-900 hover:bg-pinkHighlight text-white py-3.5 rounded-2xl text-xs font-extrabold transition flex items-center justify-center gap-2 shadow-md">
           VIEW ON AMAZON <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
         </a>
-        <p class="text-[11px] font-semibold text-stone-400 text-center">
-          Affiliate tag ?tag=techfinds1405-20 will be included
+        <p class="text-[11px] font-semibold text-stone-400 text-center tracking-wide">
+          Affiliate Tag: techfinds1405-20
         </p>
       </div>
 
@@ -616,7 +611,6 @@
       // Kategori 1: Aesthetic Desk Setup
       {
         id: 1,
-        asin: "B0DK59YKRS",
         title: "BenQ ScreenBar Halo 2 LED Monitor Light Bar - Wireless Controller, Backlight, Motion Sensor",
         category: "desk",
         categoryLabel: "Aesthetic Desk Setup",
@@ -629,7 +623,7 @@
           { label: "Save 9%", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
         ],
         image: "./benq-lightbar.jpg",
-        link: "https://www.amazon.com/dp/B0DK59YKRS",
+        link: "https://www.amazon.com/s?k=BenQ+ScreenBar+Halo+2",
         rating: "4.7",
         reviewCount: "1,850",
         boughtCount: "2,000+",
@@ -643,7 +637,6 @@
       },
       {
         id: 2,
-        asin: "B096WZXKZP",
         title: "Govee Smart Light Bar, RGBICWW TV Lights for Living Room, Gaming, Black",
         category: "desk",
         categoryLabel: "Aesthetic Desk Setup",
@@ -656,7 +649,7 @@
           { label: "Save 21%", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
         ],
         image: "./govee-lightbar.jpg",
-        link: "https://www.amazon.com/dp/B096WZXKZP",
+        link: "https://www.amazon.com/s?k=Govee+Smart+Light+Bar+RGBICWW",
         rating: "4.6",
         reviewCount: "14,200",
         boughtCount: "5,000+",
@@ -670,7 +663,6 @@
       },
       {
         id: 3,
-        asin: "B086X1HZ8W",
         title: "Nordik Leather Desk Mat - Pebble Black - Large Leather Desk Pad 35x17 in",
         category: "desk",
         categoryLabel: "Aesthetic Desk Setup",
@@ -682,7 +674,7 @@
           { label: "⚡ Under $50", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
         ],
         image: "./nordik-deskmat.jpg",
-        link: "https://www.amazon.com/dp/B086X1HZ8W",
+        link: "https://www.amazon.com/s?k=Nordik+Leather+Desk+Mat+Pebble+Black",
         rating: "4.7",
         reviewCount: "3,120",
         boughtCount: "1,200+",
@@ -696,7 +688,6 @@
       },
       {
         id: 4,
-        asin: "B0FB21526X",
         title: "Logitech MX Master 3S Bluetooth Wireless Mouse No Receiver - Graphite",
         category: "desk",
         categoryLabel: "Aesthetic Desk Setup",
@@ -709,7 +700,7 @@
           { label: "Save 20%", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
         ],
         image: "./mx-master-3s.jpg",
-        link: "https://www.amazon.com/dp/B0FB21526X",
+        link: "https://www.amazon.com/s?k=Logitech+MX+Master+3S+Graphite",
         rating: "4.6",
         reviewCount: "18,900",
         boughtCount: "10,000+",
@@ -723,7 +714,6 @@
       },
       {
         id: 5,
-        asin: "B09DVLTFJR",
         title: "Logitech POP Keys Wireless Mechanical Keyboard with Emoji Keys - Rose",
         category: "desk",
         categoryLabel: "Aesthetic Desk Setup",
@@ -735,7 +725,7 @@
           { label: "🌸 Soft Pink", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./pop-keys.jpg",
-        link: "https://www.amazon.com/dp/B09DVLTFJR",
+        link: "https://www.amazon.com/s?k=Logitech+POP+Keys+Rose",
         rating: "4.6",
         reviewCount: "4,300",
         boughtCount: "800+",
@@ -751,7 +741,6 @@
       // Kategori 2: Smart Home & Office Gadgets
       {
         id: 6,
-        asin: "B0FPIXRUV0",
         title: "Govee Smart TV LED Backlight Strip, RGBIC for 40-50inch TVs",
         category: "smart",
         categoryLabel: "Smart Home & Office",
@@ -764,7 +753,7 @@
           { label: "⚡ Under $50", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./govee-tv-backlight.jpg",
-        link: "https://www.amazon.com/dp/B0FPIXRUV0",
+        link: "https://www.amazon.com/s?k=Govee+Smart+TV+LED+Backlight+Strip",
         rating: "4.6",
         reviewCount: "22,500",
         boughtCount: "4,000+",
@@ -778,7 +767,6 @@
       },
       {
         id: 7,
-        asin: "B04NGLLKC0",
         title: "Anker MagSafe Charger Compatible, MagGo 3-in-1 Qi2 15W Charging Station",
         category: "smart",
         categoryLabel: "Smart Home & Office",
@@ -790,7 +778,7 @@
           { label: "✨ Top Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./anker-magsafe-charger.jpg",
-        link: "https://www.amazon.com/dp/B04NGLLKC0",
+        link: "https://www.amazon.com/s?k=Anker+MagGo+3-in-1+Qi2+15W+Foldable",
         rating: "4.5",
         reviewCount: "2,100",
         boughtCount: "3,000+",
@@ -804,7 +792,6 @@
       },
       {
         id: 8,
-        asin: "B0ASIJRUK0",
         title: "Quntis Computer Monitor Lamp, Screen Monitor Light Bar for Eye Caring, USB Reading LED Task Lamp",
         category: "smart",
         categoryLabel: "Smart Home & Office",
@@ -817,7 +804,7 @@
           { label: "⚡ Under $50", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
         ],
         image: "./quntis-monitor-lamp.jpg",
-        link: "https://www.amazon.com/dp/B0ASIJRUK0",
+        link: "https://www.amazon.com/s?k=Quntis+Computer+Monitor+Lamp+Eye+Caring",
         rating: "4.6",
         reviewCount: "11,800",
         boughtCount: "7,000+",
@@ -831,7 +818,6 @@
       },
       {
         id: 9,
-        asin: "B01FDV7LO0",
         title: "Govee Smart Plug with Energy Monitoring, WiFi Bluetooth Outlet, 2 Pack",
         category: "smart",
         categoryLabel: "Smart Home & Office",
@@ -844,7 +830,7 @@
           { label: "⚡ Under $50", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
         ],
         image: "./govee-smart-plug.jpg",
-        link: "https://www.amazon.com/dp/B01FDV7LO0",
+        link: "https://www.amazon.com/s?k=Govee+Smart+Plug+Energy+Monitoring+2+Pack",
         rating: "4.6",
         reviewCount: "8,600",
         boughtCount: "2,000+",
@@ -858,7 +844,6 @@
       },
       {
         id: 10,
-        asin: "B07VPOMVW0",
         title: "Levoit Air Purifiers for Bedroom Home Pets Dorm Room, Small Air Purifiers",
         category: "smart",
         categoryLabel: "Smart Home & Office",
@@ -871,7 +856,7 @@
           { label: "⚡ Under $50", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
         ],
         image: "./levoit-air-purifiers.jpg",
-        link: "https://www.amazon.com/dp/B07VPOMVW0",
+        link: "https://www.amazon.com/s?k=Levoit+Air+Purifier+Bedroom+Core+Mini",
         rating: "4.6",
         reviewCount: "95,000",
         boughtCount: "15,000+",
@@ -887,7 +872,6 @@
       // Kategori 3: Creator & Vlogging Gear
       {
         id: 11,
-        asin: "B0BGVTYHV0",
         title: "ULANZI VL49 RGB Video Lights LED Camera Light with 3 Cold Shoe & 1/4 Screw",
         category: "creator",
         categoryLabel: "Creator & Vlogging",
@@ -900,7 +884,7 @@
           { label: "✨ Overall Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./ulanzi-vl49-rgb.jpg",
-        link: "https://www.amazon.com/dp/B0BGVTYHV0",
+        link: "https://www.amazon.com/s?k=ULANZI+VL49+RGB+Video+Light",
         rating: "4.6",
         reviewCount: "5,400",
         boughtCount: "5,000+",
@@ -914,7 +898,6 @@
       },
       {
         id: 12,
-        asin: "B0C5ERQWQ0",
         title: "ULANZI Camera Tripod, Mini Flexible Phone Stand w Hidden Phone Holder",
         category: "creator",
         categoryLabel: "Creator & Vlogging",
@@ -927,7 +910,7 @@
           { label: "⚡ Under $50", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
         ],
         image: "./ulanzi-camera-tripod.jpg",
-        link: "https://www.amazon.com/dp/B0C5ERQWQ0",
+        link: "https://www.amazon.com/s?k=ULANZI+Mini+Flexible+Phone+Tripod",
         rating: "4.5",
         reviewCount: "3,800",
         boughtCount: "1,500+",
@@ -941,7 +924,6 @@
       },
       {
         id: 13,
-        asin: "B03TBGBT60",
         title: "DJI Mic 2 (2 TX + 1 RX + Charging Case), All-in-one Wireless Microphone",
         category: "creator",
         categoryLabel: "Creator & Vlogging",
@@ -953,7 +935,7 @@
           { label: "✨ Top Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./dji-mic2-cancelingnoise.jpg",
-        link: "https://www.amazon.com/dp/B03TBGBT60",
+        link: "https://www.amazon.com/s?k=DJI+Mic+2+Wireless+Microphone+2TX+1RX",
         rating: "4.6",
         reviewCount: "4,100",
         boughtCount: "3,000+",
@@ -967,7 +949,6 @@
       },
       {
         id: 14,
-        asin: "B01LPJIKE0",
         title: "Hollyland Lark M2 Wireless Microphone for iPhone/Camera/Android/PC",
         category: "creator",
         categoryLabel: "Creator & Vlogging",
@@ -979,7 +960,7 @@
           { label: "#1 Best Seller", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./hollyland-lark-m2.jpg",
-        link: "https://www.amazon.com/dp/B01LPJIKE0",
+        link: "https://www.amazon.com/s?k=Hollyland+Lark+M2+Wireless+Microphone",
         rating: "4.7",
         reviewCount: "2,900",
         boughtCount: "4,000+",
@@ -993,7 +974,6 @@
       },
       {
         id: 15,
-        asin: "B03U2RXKT0",
         title: "DJI Osmo Mobile 6, 3-Axis Phone Gimbal, Object Tracking, Built-in Extension Rod",
         category: "creator",
         categoryLabel: "Creator & Vlogging",
@@ -1005,7 +985,7 @@
           { label: "✨ Top Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./dji-osmo-mobile6.jpg",
-        link: "https://www.amazon.com/dp/B03U2RXKT0",
+        link: "https://www.amazon.com/s?k=DJI+Osmo+Mobile+6+Smartphone+Gimbal",
         rating: "4.5",
         reviewCount: "7,600",
         boughtCount: "2,500+",
@@ -1021,7 +1001,6 @@
       // Kategori 4: Cool Tech Finds Under $50
       {
         id: 16,
-        asin: "B0IIVED6Y0",
         title: "Keyboard Cleaner & Laptop Cleaning Kit, All-in-1 for Computer PC, Black",
         category: "under50",
         categoryLabel: "Cool Tech Under $50",
@@ -1034,7 +1013,7 @@
           { label: "✨ Overall Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./keyboard-cleaner-laptop.jpg",
-        link: "https://www.amazon.com/dp/B0IIVED6Y0",
+        link: "https://www.amazon.com/s?k=Keyboard+Cleaner+Laptop+Cleaning+Kit",
         rating: "4.6",
         reviewCount: "12,400",
         boughtCount: "8,000+",
@@ -1048,7 +1027,6 @@
       },
       {
         id: 17,
-        asin: "B01MOLFNG0",
         title: "20-in-1 Airpod Cleaning Kit Pro 4 3 2 1 Cleaner Tool for Earbud Phone",
         category: "under50",
         categoryLabel: "Cool Tech Under $50",
@@ -1061,7 +1039,7 @@
           { label: "⚡ Under $50", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
         ],
         image: "./airpod-cleaning-kit.jpg",
-        link: "https://www.amazon.com/dp/B01MOLFNG0",
+        link: "https://www.amazon.com/s?k=Airpod+Cleaning+Kit+Pro+Tool",
         rating: "4.5",
         reviewCount: "6,700",
         boughtCount: "3,000+",
@@ -1075,7 +1053,6 @@
       },
       {
         id: 18,
-        asin: "B0FLORXO30",
         title: "Coffee Mug Warmer-Fastest Heating & Highest Temperature, Auto Shut Off",
         category: "under50",
         categoryLabel: "Cool Tech Under $50",
@@ -1088,7 +1065,7 @@
           { label: "#1 Best Seller", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./coffee-mug-warmer.jpg",
-        link: "https://www.amazon.com/dp/B0FLORXO30",
+        link: "https://www.amazon.com/s?k=Coffee+Mug+Warmer+Fastest+Heating",
         rating: "4.6",
         reviewCount: "14,800",
         boughtCount: "10,000+",
@@ -1102,7 +1079,6 @@
       },
       {
         id: 19,
-        asin: "B08LALZ6R0",
         title: "UGREEN Desk Cable Organizer, Magnetic Cord Holder 6 Pack, Silicone Cable Clip",
         category: "under50",
         categoryLabel: "Cool Tech Under $50",
@@ -1115,7 +1091,7 @@
           { label: "✨ Overall Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./ugreen-desk-cable.jpg",
-        link: "https://www.amazon.com/dp/B08LALZ6R0",
+        link: "https://www.amazon.com/s?k=UGREEN+Desk+Cable+Organizer+Magnetic",
         rating: "4.4",
         reviewCount: "9,200",
         boughtCount: "4,000+",
@@ -1129,7 +1105,6 @@
       },
       {
         id: 20,
-        asin: "B0IE18YJ00",
         title: "8-Pack Cable Clips, Quick-Lock Cord Organizer Black",
         category: "under50",
         categoryLabel: "Cool Tech Under $50",
@@ -1142,7 +1117,7 @@
           { label: "🏷️ Amazon Choice", color: "bg-amberAccent text-amberText border-amberText/20" }
         ],
         image: "./8pack-cable-clips.jpg",
-        link: "https://www.amazon.com/dp/B0IE18YJ00",
+        link: "https://www.amazon.com/s?k=8-Pack+Cable+Clips+Quick-Lock",
         rating: "4.7",
         reviewCount: "15,300",
         boughtCount: "6,000+",
@@ -1201,7 +1176,6 @@
 
       document.getElementById('modalProductImg').src = item.image;
       document.getElementById('modalProductCategory').innerText = item.categoryLabel;
-      document.getElementById('modalProductAsin').innerText = `ASIN: ${item.asin || 'B0DK59YKRS'}`;
       document.getElementById('modalProductTitle').innerText = item.title;
       document.getElementById('modalProductRating').innerText = item.rating;
       document.getElementById('modalProductReviews').innerText = `(${item.reviewCount || '1,000+'} reviews on Amazon)`;
@@ -1571,7 +1545,6 @@
       if (type === 'product') {
         const newProd = {
           id: products.length + 1,
-          asin: "B0NEWITEM123",
           title: title,
           category: category,
           categoryLabel: category === 'desk' ? 'Aesthetic Desk Setup' : category === 'smart' ? 'Smart Home' : category === 'creator' ? 'Creator Gear' : 'Budget Pick',
