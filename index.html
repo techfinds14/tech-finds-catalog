@@ -49,7 +49,7 @@
       <div class="flex items-center gap-2 w-full sm:w-auto">
         <div class="relative flex-1 sm:w-72">
           <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
-          <input type="text" id="searchInput" placeholder="Search gear, mic, tripod, 4K..." 
+          <input type="text" id="searchInput" placeholder="Search gear, cable, mug warmer, 4K..." 
                  class="w-full bg-white border border-stone-200 rounded-full pl-9 pr-4 py-2 text-xs text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sageText/30 shadow-sm transition">
         </div>
         <button onclick="shareWebsite()" class="hidden sm:flex p-2 text-gray-600 hover:text-gray-900 bg-white border border-stone-200 rounded-full text-xs items-center justify-center w-9 h-9 shadow-sm" title="Share Website">
@@ -87,14 +87,14 @@
         <button onclick="filterCategory('all')" class="bg-sageText text-white px-3.5 py-1.5 rounded-full text-xs font-medium hover:bg-stone-800 transition shadow-sm flex items-center gap-1.5">
           ✨ Top Picks
         </button>
-        <button onclick="filterCategory('creator')" class="bg-purple-50 text-purple-800 border border-purple-200 px-3.5 py-1.5 rounded-full text-xs font-medium hover:bg-purple-700 hover:text-white transition flex items-center gap-1.5">
-          📹 Creator & Vlogging
-        </button>
-        <button onclick="filterCategory('smart')" class="bg-blue-50 text-blue-800 border border-blue-200 px-3.5 py-1.5 rounded-full text-xs font-medium hover:bg-blue-600 hover:text-white transition flex items-center gap-1.5">
-          🏠 Smart Home & Office
-        </button>
         <button onclick="filterCategory('under50')" class="bg-emerald-50 text-emerald-800 border border-emerald-200 px-3.5 py-1.5 rounded-full text-xs font-medium hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5">
-          ⚡ Under $50
+          ⚡ Cool Tech Under $50
+        </button>
+        <button onclick="filterCategory('desk')" class="bg-amberAccent text-amberText border border-amberText/20 px-3.5 py-1.5 rounded-full text-xs font-medium hover:bg-amberText hover:text-white transition flex items-center gap-1.5">
+          🛋️ Aesthetic Desk Setup
+        </button>
+        <button onclick="filterCategory('creator')" class="bg-purple-50 text-purple-800 border border-purple-200 px-3.5 py-1.5 rounded-full text-xs font-medium hover:bg-purple-700 hover:text-white transition flex items-center gap-1.5">
+          📹 Creator Gear
         </button>
       </div>
     </section>
@@ -106,7 +106,10 @@
         <!-- Category Tabs -->
         <div class="flex items-center gap-2 overflow-x-auto pb-1 max-w-full no-scrollbar" id="categoryTabs">
           <button onclick="filterCategory('all')" id="tab-all" class="cat-tab bg-sageText text-white font-bold px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0 shadow-sm">
-            All <span id="count-all" class="bg-white/20 text-white px-1.5 py-0.5 rounded-md text-[10px]">15</span>
+            All <span id="count-all" class="bg-white/20 text-white px-1.5 py-0.5 rounded-md text-[10px]">20</span>
+          </button>
+          <button onclick="filterCategory('under50')" id="tab-under50" class="cat-tab bg-white text-gray-700 hover:text-gray-900 border border-stone-200 px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0">
+            Cool Tech Under $50 <span id="count-under50" class="bg-stone-100 text-gray-600 px-1.5 py-0.5 rounded-md text-[10px]">12</span>
           </button>
           <button onclick="filterCategory('desk')" id="tab-desk" class="cat-tab bg-white text-gray-700 hover:text-gray-900 border border-stone-200 px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0">
             Aesthetic Desk Setup <span id="count-desk" class="bg-stone-100 text-gray-600 px-1.5 py-0.5 rounded-md text-[10px]">5</span>
@@ -116,9 +119,6 @@
           </button>
           <button onclick="filterCategory('creator')" id="tab-creator" class="cat-tab bg-white text-gray-700 hover:text-gray-900 border border-stone-200 px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0">
             Creator & Vlogging <span id="count-creator" class="bg-stone-100 text-gray-600 px-1.5 py-0.5 rounded-md text-[10px]">5</span>
-          </button>
-          <button onclick="filterCategory('under50')" id="tab-under50" class="cat-tab bg-white text-gray-700 hover:text-gray-900 border border-stone-200 px-4 py-2 rounded-full text-xs flex items-center gap-2 transition shrink-0">
-            Cool Tech Under $50 <span id="count-under50" class="bg-stone-100 text-gray-600 px-1.5 py-0.5 rounded-md text-[10px]">7</span>
           </button>
         </div>
 
@@ -173,10 +173,10 @@
         <div>
           <h4 class="text-xs font-bold uppercase tracking-wider text-gray-900 mb-4">Collections</h4>
           <ul class="space-y-2.5 text-xs text-gray-600">
+            <li><a href="#" onclick="filterCategory('under50'); return false;" class="hover:text-sageText transition">Cool Tech Under $50</a></li>
             <li><a href="#" onclick="filterCategory('desk'); return false;" class="hover:text-sageText transition">Aesthetic Desk Setup</a></li>
             <li><a href="#" onclick="filterCategory('smart'); return false;" class="hover:text-sageText transition">Smart Home & Office Gadgets</a></li>
             <li><a href="#" onclick="filterCategory('creator'); return false;" class="hover:text-sageText transition">Creator & Vlogging Gear</a></li>
-            <li><a href="#" onclick="filterCategory('under50'); return false;" class="hover:text-sageText transition">Cool Tech Under $50</a></li>
           </ul>
         </div>
 
@@ -406,7 +406,7 @@
         ],
         image: "./dji-mic2-cancelingnoise.jpg",
         link: "https://link.amazon/B03tbgBt6",
-       rating: "4.6"
+        rating: "4.6"
       },
       {
         id: 14,
@@ -435,6 +435,83 @@
         image: "./dji-osmo-mobile6.jpg",
         link: "https://link.amazon/B03U2RxKt",
         rating: "4.5"
+      },
+
+      // Kategori: Cool Tech Finds Under $50
+      {
+        id: 16,
+        title: "Keyboard Cleaner & Laptop Cleaning Kit, All-in-1 for Computer PC, Black",
+        category: "under50",
+        categoryLabel: "Cool Tech Under $50",
+        rawPrice: 16.13,
+        price: "$16.13",
+        badges: [
+          { label: "⚡ 5% OFF", color: "bg-emerald-50 text-emerald-800 border-emerald-200" },
+          { label: "✨ Overall Pick", color: "bg-sageAccent text-sageText border-sageText/20" }
+        ],
+        image: "./keyboard-cleaner-laptop.jpg",
+        link: "https://link.amazon/B0iiVeD6y",
+        rating: "4.6"
+      },
+      {
+        id: 17,
+        title: "20-in-1 Airpod Cleaning Kit Pro 4 3 2 1 Cleaner Tool for Earbud Phone",
+        category: "under50",
+        categoryLabel: "Cool Tech Under $50",
+        rawPrice: 13.99,
+        price: "$13.99",
+        badges: [
+          { label: "✨ Overall Pick", color: "bg-sageAccent text-sageText border-sageText/20" },
+          { label: "⚡ Under $50", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
+        ],
+        image: "./airpod-cleaning-kit.jpg",
+        link: "https://link.amazon/B01moLFNG",
+        rating: "4.5"
+      },
+      {
+        id: 18,
+        title: "Coffee Mug Warmer-Fastest Heating & Highest Temperature, Coffee Cup Warmer for Desk Auto Shut Off, 4 Temp Settings",
+        category: "under50",
+        categoryLabel: "Cool Tech Under $50",
+        rawPrice: 18.99,
+        price: "$18.99",
+        badges: [
+          { label: "⚡ 39% OFF", color: "bg-emerald-50 text-emerald-800 border-emerald-200" },
+          { label: "✨ Overall Pick", color: "bg-sageAccent text-sageText border-sageText/20" }
+        ],
+        image: "./coffee-mug-warmer.jpg",
+        link: "https://link.amazon/B0fLOrXo3",
+        rating: "4.6"
+      },
+      {
+        id: 19,
+        title: "UGREEN Desk Cable Organizer, Magnetic Cord Holder 6 Pack, Silicone Cable Clip with Strong Magnet",
+        category: "under50",
+        categoryLabel: "Cool Tech Under $50",
+        rawPrice: 12.99,
+        price: "$12.99",
+        badges: [
+          { label: "⚡ 19% OFF", color: "bg-emerald-50 text-emerald-800 border-emerald-200" },
+          { label: "✨ Overall Pick", color: "bg-sageAccent text-sageText border-sageText/20" }
+        ],
+        image: "./ugreen-desk-cable.jpg",
+        link: "https://link.amazon/B08lAlz6r",
+        rating: "4.4"
+      },
+      {
+        id: 20,
+        title: "8-Pack Cable Clips, Quick-Lock Cord Organizer Black",
+        category: "under50",
+        categoryLabel: "Cool Tech Under $50",
+        rawPrice: 9.58,
+        price: "$9.58",
+        badges: [
+          { label: "⚡ 20% OFF", color: "bg-emerald-50 text-emerald-800 border-emerald-200" },
+          { label: "🏷️ Amazon's Choice", color: "bg-amberAccent text-amberText border-amberText/20" }
+        ],
+        image: "./8pack-cable-clips.jpg",
+        link: "https://link.amazon/B0ie18YjM",
+        rating: "4.7"
       }
     ];
     let currentCategory = 'all';
@@ -549,7 +626,7 @@
       }
 
       renderProducts(items);
-    }
+          }
     function updateCounts() {
       const allCount = products.length;
       const deskCount = products.filter(p => p.category === 'desk').length;
