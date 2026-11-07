@@ -63,7 +63,7 @@
         <a href="#" onclick="openModal('aboutModal'); return false;" class="hover:text-pinkHighlight transition">About</a>
       </nav>
 
-      <!-- Search, CMS & 3-Strip Menu Buttons -->
+      <!-- Search, CMS (Protected) & 3-Strip Menu Buttons -->
       <div class="flex items-center gap-2">
         <div class="relative hidden sm:block w-44 lg:w-56">
           <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
@@ -71,9 +71,9 @@
                  class="w-full bg-white border border-stone-200 rounded-full pl-9 pr-4 py-2 text-xs text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pinkHighlight/40 shadow-sm transition">
         </div>
         
-        <!-- CMS Button -->
-        <button onclick="openModal('cmsModal')" class="bg-gray-900 hover:bg-pinkHighlight text-white px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm" title="CMS Admin Dashboard">
-          <i class="fa-solid fa-sliders text-xs"></i> <span class="hidden sm:inline">CMS</span>
+        <!-- CMS Button Terproteksi Password -->
+        <button onclick="openCMSProtected()" class="bg-gray-900 hover:bg-pinkHighlight text-white px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm" title="CMS Admin Dashboard (Protected)">
+          <i class="fa-solid fa-lock text-xs"></i> <span class="hidden sm:inline">CMS</span>
         </button>
 
         <!-- FITUR 3 STRIP (HAMBURGER MENU) -->
@@ -474,18 +474,18 @@
     </div>
   </div>
 
-  <!-- MODAL: CMS ADMIN DASHBOARD -->
+  <!-- MODAL: CMS ADMIN DASHBOARD (PROTECTED) -->
   <div id="cmsModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 border border-stone-200 shadow-xl space-y-4 max-h-[90vh] overflow-y-auto">
       <div class="flex items-center justify-between border-b border-stone-100 pb-3">
         <div class="flex items-center gap-2">
-          <span class="w-7 h-7 rounded-lg bg-pinkHighlight text-white flex items-center justify-center text-xs font-bold">CMS</span>
-          <h3 class="font-extrabold text-lg text-gray-900">Content Management System</h3>
+          <span class="w-7 h-7 rounded-lg bg-pinkHighlight text-white flex items-center justify-center text-xs font-bold"><i class="fa-solid fa-lock"></i></span>
+          <h3 class="font-extrabold text-lg text-gray-900">CMS Admin Dashboard</h3>
         </div>
         <button onclick="closeModal('cmsModal')" class="text-gray-400 hover:text-gray-700 text-lg">&times;</button>
       </div>
 
-      <p class="text-xs text-gray-500">Easily add new Amazon affiliate product cards or blog posts without redesigning any code.</p>
+      <p class="text-xs text-gray-500">Authorized Admin Mode: Add new Amazon affiliate product cards or blog posts.</p>
 
       <form id="cmsForm" onsubmit="handleCMSAdd(event)" class="space-y-3">
         <div>
@@ -538,7 +538,7 @@
         </div>
         <div>
           <label class="block text-[11px] font-bold text-gray-700 uppercase mb-1">Amazon Affiliate Link URL</label>
-          <input type="text" id="cmsLink" required placeholder="https://www.amazon.com/dp/..." class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs">
+          <input type="text" id="cmsLink" required placeholder="https://link.amazon/..." class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs">
         </div>
         <button type="submit" class="w-full bg-pinkHighlight hover:bg-rose-700 text-white py-3 rounded-full text-xs font-extrabold shadow-md transition">Publish Content to Website</button>
       </form>
@@ -607,11 +607,31 @@
 
   <!-- JAVASCRIPT DATABASE & INTERACTIVE LOGIC -->
   <script>
+    // KATA SANDI ADMIN UNTUK CMS
+    const CMS_PASSWORD = "admin123";
+    let isCmsAuthenticated = false;
+
+    function openCMSProtected() {
+      if (isCmsAuthenticated) {
+        openModal('cmsModal');
+        return;
+      }
+
+      const userInput = prompt("🔒 Masukkan Kata Sandi Admin untuk Mengakses CMS:");
+      if (userInput === CMS_PASSWORD) {
+        isCmsAuthenticated = true;
+        alert("✅ Verifikasi berhasil! Jendela CMS Admin terbuka.");
+        openModal('cmsModal');
+      } else if (userInput !== null) {
+        alert("❌ Kata sandi salah! Akses ditolak.");
+      }
+    }
+
     const products = [
       // Kategori 1: Aesthetic Desk Setup
       {
         id: 1,
-        title: "BenQ ScreenBar Halo 2 LED Monitor Light Bar - Wireless Controller, Backlight, Motion Sensor",
+        title: "BenQ ScreenBar Halo 2 LED Monitor Light Bar",
         category: "desk",
         categoryLabel: "Aesthetic Desk Setup",
         rawPrice: 209.99,
@@ -623,7 +643,7 @@
           { label: "Save 9%", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
         ],
         image: "./benq-lightbar.jpg",
-        link: "https://www.amazon.com/dp/B098TVC223",
+        link: "https://link.amazon/B0ghSJShX",
         rating: "4.7",
         reviewCount: "1,850",
         boughtCount: "2,000+",
@@ -649,7 +669,7 @@
           { label: "Save 21%", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
         ],
         image: "./govee-lightbar.jpg",
-        link: "https://www.amazon.com/dp/B096WZXKZP",
+        link: "https://link.amazon/B00WAHL1T",
         rating: "4.6",
         reviewCount: "14,200",
         boughtCount: "5,000+",
@@ -674,7 +694,7 @@
           { label: "⚡ Under $50", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
         ],
         image: "./nordik-deskmat.jpg",
-        link: "https://www.amazon.com/dp/B086X1HZ8W",
+        link: "https://link.amazon/B02LMJUGE",
         rating: "4.7",
         reviewCount: "3,120",
         boughtCount: "1,200+",
@@ -700,7 +720,7 @@
           { label: "Save 20%", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
         ],
         image: "./mx-master-3s.jpg",
-        link: "https://www.amazon.com/dp/B09HM94VDS",
+        link: "https://link.amazon/B0gvthnUC",
         rating: "4.6",
         reviewCount: "18,900",
         boughtCount: "10,000+",
@@ -725,7 +745,7 @@
           { label: "🌸 Soft Pink", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./pop-keys.jpg",
-        link: "https://www.amazon.com/dp/B09DVLTFJR",
+        link: "https://link.amazon/B0cjMqavJ",
         rating: "4.6",
         reviewCount: "4,300",
         boughtCount: "800+",
@@ -738,7 +758,7 @@
         isBestseller: false
       },
 
-      // Kategori 2: Smart Home & Office Gadgets (Direct Product Links ASIN Valid)
+      // Kategori 2: Smart Home & Office Gadgets
       {
         id: 6,
         title: "Govee Smart TV LED Backlight Strip, RGBIC for 40-50inch TVs",
@@ -753,7 +773,7 @@
           { label: "⚡ Under $50", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./govee-tv-backlight.jpg",
-        link: "https://www.amazon.com/dp/B07N1C4ZVT",
+        link: "https://link.amazon/B04vTWGIT",
         rating: "4.6",
         reviewCount: "22,500",
         boughtCount: "4,000+",
@@ -778,7 +798,7 @@
           { label: "✨ Top Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./anker-magsafe-charger.jpg",
-        link: "https://www.amazon.com/dp/B0CFY1SH12",
+        link: "https://link.amazon/B0aBqbJ9T",
         rating: "4.5",
         reviewCount: "2,100",
         boughtCount: "3,000+",
@@ -792,7 +812,7 @@
       },
       {
         id: 8,
-        title: "Quntis Computer Monitor Lamp, Screen Monitor Light Bar for Eye Caring, USB Reading LED Task Lamp",
+        title: "Quntis Computer Monitor Lamp, Screen Monitor Light Bar for Eye Caring, USB Reading LED Task Lamp with Auto-Dimming, Dimmable Light Bar, Touch Control, No Glare Space Saving Home Office Desk Lamps",
         category: "smart",
         categoryLabel: "Smart Home & Office",
         rawPrice: 39.95,
@@ -804,7 +824,7 @@
           { label: "⚡ Under $50", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
         ],
         image: "./quntis-monitor-lamp.jpg",
-        link: "https://www.amazon.com/dp/B08DKQ38L3",
+        link: "https://link.amazon/B02lpvSsp",
         rating: "4.6",
         reviewCount: "11,800",
         boughtCount: "7,000+",
@@ -830,7 +850,7 @@
           { label: "⚡ Under $50", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
         ],
         image: "./govee-smart-plug.jpg",
-        link: "https://www.amazon.com/dp/B089DR29T6",
+        link: "https://link.amazon/B0evVFOrQ",
         rating: "4.6",
         reviewCount: "8,600",
         boughtCount: "2,000+",
@@ -856,7 +876,7 @@
           { label: "⚡ Under $50", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
         ],
         image: "./levoit-air-purifiers.jpg",
-        link: "https://www.amazon.com/dp/B07VVK39F7",
+        link: "https://link.amazon/B01QP5CdP",
         rating: "4.6",
         reviewCount: "95,000",
         boughtCount: "15,000+",
@@ -869,7 +889,7 @@
         isBestseller: true
       },
 
-      // Kategori 3: Creator & Vlogging Gear (Direct Product Links ASIN Valid)
+      // Kategori 3: Creator & Vlogging Gear
       {
         id: 11,
         title: "ULANZI VL49 RGB Video Lights LED Camera Light with 3 Cold Shoe & 1/4 Screw",
@@ -884,7 +904,7 @@
           { label: "✨ Overall Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./ulanzi-vl49-rgb.jpg",
-        link: "https://www.amazon.com/dp/B0833F4KTY",
+        link: "https://link.amazon/B03NQB0X8",
         rating: "4.6",
         reviewCount: "5,400",
         boughtCount: "5,000+",
@@ -910,7 +930,7 @@
           { label: "⚡ Under $50", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
         ],
         image: "./ulanzi-camera-tripod.jpg",
-        link: "https://www.amazon.com/dp/B09GF87T2B",
+        link: "https://link.amazon/B0i8N93M2",
         rating: "4.5",
         reviewCount: "3,800",
         boughtCount: "1,500+",
@@ -935,7 +955,7 @@
           { label: "✨ Top Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./dji-mic2-cancelingnoise.jpg",
-        link: "https://www.amazon.com/dp/B0CP63B7C1",
+        link: "https://link.amazon/B0ii1QU3H",
         rating: "4.6",
         reviewCount: "4,100",
         boughtCount: "3,000+",
@@ -949,7 +969,7 @@
       },
       {
         id: 14,
-        title: "Hollyland Lark M2 Wireless Microphone for iPhone/Camera/Android/PC",
+        title: "Hollyland Lark M2 Wireless Microphone for iPhone/Camera/Android/PC, 48kHz/24-bit High Fidelity Audio, 300m Range, Noise Cancelling, 40h Use, YouTube, Vlog, Streaming (Black, with Camera RX + USB-C RX)",
         category: "creator",
         categoryLabel: "Creator & Vlogging",
         rawPrice: 89.10,
@@ -960,7 +980,7 @@
           { label: "#1 Best Seller", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./hollyland-lark-m2.jpg",
-        link: "https://www.amazon.com/dp/B0CS2Z1N2X",
+        link: "https://link.amazon/B0020VwQ7",
         rating: "4.7",
         reviewCount: "2,900",
         boughtCount: "4,000+",
@@ -974,7 +994,7 @@
       },
       {
         id: 15,
-        title: "DJI Osmo Mobile 6, 3-Axis Phone Gimbal, Object Tracking, Built-in Extension Rod",
+        title: "DJI Osmo Mobile 6, 3-Axis Phone Gimbal, Object Tracking, Built-in Extension Rod, Portable and Foldable, Gimbal Stabilizer for iPhone, Android, YouTube TikTok Video, Platinum Gray",
         category: "creator",
         categoryLabel: "Creator & Vlogging",
         rawPrice: 109.00,
@@ -985,7 +1005,7 @@
           { label: "✨ Top Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./dji-osmo-mobile6.jpg",
-        link: "https://www.amazon.com/dp/B0B8K3R4B9",
+        link: "https://link.amazon/B0a4QgA8U",
         rating: "4.5",
         reviewCount: "7,600",
         boughtCount: "2,500+",
@@ -1013,7 +1033,7 @@
           { label: "✨ Overall Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./keyboard-cleaner-laptop.jpg",
-        link: "https://www.amazon.com/dp/B0B97D443T",
+        link: "https://link.amazon/B0hN8p7jx",
         rating: "4.6",
         reviewCount: "12,400",
         boughtCount: "8,000+",
@@ -1039,7 +1059,7 @@
           { label: "⚡ Under $50", color: "bg-emerald-50 text-emerald-800 border-emerald-200" }
         ],
         image: "./airpod-cleaning-kit.jpg",
-        link: "https://www.amazon.com/dp/B09V7WF1S1",
+        link: "https://link.amazon/B08wZi8YU",
         rating: "4.5",
         reviewCount: "6,700",
         boughtCount: "3,000+",
@@ -1053,7 +1073,7 @@
       },
       {
         id: 18,
-        title: "Coffee Mug Warmer-Fastest Heating & Highest Temperature, Auto Shut Off",
+        title: "Coffee Mug Warmer-Fastest Heating & Highest Temperature, Coffee Cup Warmer for Desk Auto Shut Off, 4 Temp Settings & 1-12H Timer, Smart Electric Mug & Candle Warmer for Coffee, Tea (Black)",
         category: "under50",
         categoryLabel: "Cool Tech Under $50",
         rawPrice: 18.99,
@@ -1065,7 +1085,7 @@
           { label: "#1 Best Seller", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./coffee-mug-warmer.jpg",
-        link: "https://www.amazon.com/dp/B08DFP6CRK",
+        link: "https://link.amazon/B0exy1l3P",
         rating: "4.6",
         reviewCount: "14,800",
         boughtCount: "10,000+",
@@ -1079,7 +1099,7 @@
       },
       {
         id: 19,
-        title: "UGREEN Desk Cable Organizer, Magnetic Cord Holder 6 Pack, Silicone Cable Clip",
+        title: "UGREEN Desk Cable Organizer, Magnetic Cord Holder 6 Pack, Silicone Cable Clip with Strong Magnet, 2 Sizes for Charging Cords, Easy Cable Management for Desk, Nightstand, Car, Home Office",
         category: "under50",
         categoryLabel: "Cool Tech Under $50",
         rawPrice: 12.99,
@@ -1091,7 +1111,7 @@
           { label: "✨ Overall Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
         ],
         image: "./ugreen-desk-cable.jpg",
-        link: "https://www.amazon.com/dp/B08LALZ6R0",
+        link: "https://link.amazon/B01mlHuGV",
         rating: "4.4",
         reviewCount: "9,200",
         boughtCount: "4,000+",
@@ -1117,7 +1137,7 @@
           { label: "🏷️ Amazon Choice", color: "bg-amberAccent text-amberText border-amberText/20" }
         ],
         image: "./8pack-cable-clips.jpg",
-        link: "https://www.amazon.com/dp/B071FXZB4W",
+        link: "https://link.amazon/B0cYQ5keC",
         rating: "4.7",
         reviewCount: "15,300",
         boughtCount: "6,000+",
@@ -1215,12 +1235,7 @@
         </span>
       `).join('');
 
-      let affiliateUrl = item.link;
-      if (!affiliateUrl.includes('tag=')) {
-        const separator = affiliateUrl.includes('?') ? '&' : '?';
-        affiliateUrl += `${separator}tag=techfinds1405-20`;
-      }
-      document.getElementById('modalProductLink').href = affiliateUrl;
+      document.getElementById('modalProductLink').href = item.link;
 
       openModal('productPreviewModal');
     }
@@ -1290,7 +1305,7 @@
                 ` : ''}
               </div>
 
-              <a href="${item.link}${item.link.includes('?') ? '&' : '?'}tag=techfinds1405-20" target="_blank" rel="noopener noreferrer" 
+              <a href="${item.link}" target="_blank" rel="noopener noreferrer" 
                  class="bg-pinkHighlight hover:bg-rose-700 text-white px-4 py-2.5 rounded-full text-xs font-extrabold transition flex items-center gap-1.5 shadow-md shadow-pink-500/20 shrink-0">
                 View on Amazon <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
               </a>
@@ -1344,7 +1359,7 @@
               </div>
               ${item.boughtCount ? `<span class="text-[9px] text-rose-400 font-bold">⚡ ${item.boughtCount}</span>` : ''}
             </div>
-            <a href="${item.link}${item.link.includes('?') ? '&' : '?'}tag=techfinds1405-20" target="_blank" rel="noopener noreferrer" 
+            <a href="${item.link}" target="_blank" rel="noopener noreferrer" 
                class="w-full bg-pinkHighlight hover:bg-rose-700 text-white py-2 rounded-xl text-[11px] font-extrabold transition flex items-center justify-center gap-1 shadow-sm">
               View on Amazon <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
             </a>
@@ -1405,7 +1420,7 @@
                     <span class="text-xs text-amber-500 font-bold">&star; ${item.rating} (${item.reviewCount})</span>
                   </div>
                 </div>
-                <a href="${item.link}?tag=techfinds1405-20" target="_blank" class="bg-pinkHighlight hover:bg-rose-700 text-white px-4 py-2 rounded-full text-xs font-bold shrink-0 shadow-sm">
+                <a href="${item.link}" target="_blank" class="bg-pinkHighlight hover:bg-rose-700 text-white px-4 py-2 rounded-full text-xs font-bold shrink-0 shadow-sm">
                   View on Amazon &rarr;
                 </a>
               </div>
@@ -1529,6 +1544,11 @@
 
     function handleCMSAdd(event) {
       event.preventDefault();
+      if (!isCmsAuthenticated) {
+        alert("❌ Akses ditolak. Silakan login CMS terlebih dahulu.");
+        return;
+      }
+
       const type = document.getElementById('cmsType').value;
       const title = document.getElementById('cmsTitle').value;
       const category = document.getElementById('cmsCategory').value;
