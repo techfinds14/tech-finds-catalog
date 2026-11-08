@@ -607,7 +607,6 @@
 
   <!-- JAVASCRIPT DATABASE & INTERACTIVE LOGIC -->
   <script>
-    // KATA SANDI ADMIN UNTUK CMS
     const CMS_PASSWORD = "admin123";
     let isCmsAuthenticated = false;
 
@@ -626,6 +625,63 @@
         alert("❌ Kata sandi salah! Akses ditolak.");
       }
     }
+
+    // FUNGSI SHARE LINK PRODUK KATALOG WEBSITE
+    function toggleShareDropdown(event, id) {
+      event.stopPropagation();
+      document.querySelectorAll('[id^="share-dropdown-"]').forEach(el => {
+        if (el.id !== `share-dropdown-${id}`) el.classList.add('hidden');
+      });
+      const dropdown = document.getElementById(`share-dropdown-${id}`);
+      if (dropdown) dropdown.classList.toggle('hidden');
+    }
+
+    function copyProductShareLink(event, id) {
+      event.stopPropagation();
+      const dropdown = document.getElementById(`share-dropdown-${id}`);
+      if (dropdown) dropdown.classList.add('hidden');
+
+      const shareUrl = `${window.location.origin}${window.location.pathname}?product=${id}`;
+      
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(shareUrl).then(() => {
+          alert("✅ Link produk katalog berhasil disalin ke clipboard!");
+        }).catch(() => {
+          fallbackCopyText(shareUrl);
+        });
+      } else {
+        fallbackCopyText(shareUrl);
+      }
+    }
+
+    function fallbackCopyText(text) {
+      const tempInput = document.createElement('input');
+      tempInput.value = text;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+      alert("✅ Link produk katalog berhasil disalin!");
+    }
+
+    function checkUrlForProductDeepLink() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get('product');
+      if (productId) {
+        const idNum = parseInt(productId);
+        if (idNum && products.some(p => p.id === idNum)) {
+          setTimeout(() => {
+            openProductPreview(idNum);
+          }, 400);
+        }
+      }
+    }
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('[id^="share-dropdown-"]') && !e.target.closest('button[onclick*="toggleShareDropdown"]')) {
+        document.querySelectorAll('[id^="share-dropdown-"]').forEach(el => el.classList.add('hidden'));
+      }
+    });
 
     const products = [
       // Kategori 1: Aesthetic Desk Setup
@@ -812,7 +868,7 @@
       },
       {
         id: 8,
-        title: "Quntis Computer Monitor Lamp, Screen Monitor Light Bar for Eye Caring, USB Reading LED Task Lamp with Auto-Dimming, Dimmable Light Bar, Touch Control, No Glare Space Saving Home Office Desk Lamps",
+        title: "Quntis Computer Monitor Lamp, Screen Monitor Light Bar for Eye Caring, USB Reading LED Task Lamp",
         category: "smart",
         categoryLabel: "Smart Home & Office",
         rawPrice: 39.95,
@@ -952,7 +1008,7 @@
         originalPrice: "$219.00",
         desc: "Pro-grade wireless lavalier microphone system with intelligent noise cancelling & 32-bit float.",
         badges: [
-          { label: "✨ Top Pick", color: "bg-pinkSoft text-pinkText border-pinkHighlight/20" }
+          { label: "✨ Top Pick", color: "bg-[#FAF8F5] text-pinkText border-pinkHighlight/20" }
         ],
         image: "./dji-mic2-cancelingnoise.jpg",
         link: "https://link.amazon/B0ii1QU3H",
@@ -969,7 +1025,7 @@
       },
       {
         id: 14,
-        title: "Hollyland Lark M2 Wireless Microphone for iPhone/Camera/Android/PC, 48kHz/24-bit High Fidelity Audio, 300m Range, Noise Cancelling, 40h Use, YouTube, Vlog, Streaming (Black, with Camera RX + USB-C RX)",
+        title: "Hollyland Lark M2 Wireless Microphone for iPhone/Camera/Android/PC",
         category: "creator",
         categoryLabel: "Creator & Vlogging",
         rawPrice: 89.10,
@@ -994,7 +1050,7 @@
       },
       {
         id: 15,
-        title: "DJI Osmo Mobile 6, 3-Axis Phone Gimbal, Object Tracking, Built-in Extension Rod, Portable and Foldable, Gimbal Stabilizer for iPhone, Android, YouTube TikTok Video, Platinum Gray",
+        title: "DJI Osmo Mobile 6, 3-Axis Phone Gimbal, Object Tracking, Built-in Extension Rod",
         category: "creator",
         categoryLabel: "Creator & Vlogging",
         rawPrice: 109.00,
@@ -1073,7 +1129,7 @@
       },
       {
         id: 18,
-        title: "Coffee Mug Warmer-Fastest Heating & Highest Temperature, Coffee Cup Warmer for Desk Auto Shut Off, 4 Temp Settings & 1-12H Timer, Smart Electric Mug & Candle Warmer for Coffee, Tea (Black)",
+        title: "Coffee Mug Warmer-Fastest Heating & Highest Temperature, Auto Shut Off",
         category: "under50",
         categoryLabel: "Cool Tech Under $50",
         rawPrice: 18.99,
@@ -1099,7 +1155,7 @@
       },
       {
         id: 19,
-        title: "UGREEN Desk Cable Organizer, Magnetic Cord Holder 6 Pack, Silicone Cable Clip with Strong Magnet, 2 Sizes for Charging Cords, Easy Cable Management for Desk, Nightstand, Car, Home Office",
+        title: "UGREEN Desk Cable Organizer, Magnetic Cord Holder 6 Pack, Silicone Cable Clip",
         category: "under50",
         categoryLabel: "Cool Tech Under $50",
         rawPrice: 12.99,
@@ -1152,7 +1208,7 @@
     ];
 
     const blogPosts = [
-            {
+      {
         id: 1,
         title: "Top 5 Must-Have Aesthetic Desk Setup Essentials for 2026",
         metaDesc: "Upgrade your workstation with the best monitor light bars, ergonomic mice, and leather pads. See top Amazon deals.",
@@ -1246,11 +1302,17 @@
         </span>
       `).join('');
 
-      document.getElementById('modalProductLink').href = item.link;
+      let affiliateUrl = item.link;
+      if (!affiliateUrl.includes('tag=')) {
+        const separator = affiliateUrl.includes('?') ? '&' : '?';
+        affiliateUrl += `${separator}tag=techfinds1405-20`;
+      }
+      document.getElementById('modalProductLink').href = affiliateUrl;
 
       openModal('productPreviewModal');
     }
 
+    // RENDER PRODUK DENGAN FITUR TOMBOL TITIK TIGA (SHARE)
     function renderProducts(items) {
       const grid = document.getElementById('product-grid');
       if (!grid) return;
@@ -1265,16 +1327,30 @@
       }
 
       grid.innerHTML = items.map(item => `
-        <div class="bg-white rounded-3xl p-4 sm:p-5 border border-stone-200/80 shadow-sm hover:shadow-md transition flex flex-col justify-between group">
+        <div class="bg-white rounded-3xl p-4 sm:p-5 border border-stone-200/80 shadow-sm hover:shadow-md transition flex flex-col justify-between group relative">
           <div>
             <div onclick="openProductPreview(${item.id})" class="relative w-full h-52 rounded-2xl overflow-hidden mb-3.5 bg-[#FAF8F5] flex items-center justify-center p-4 border border-stone-100 cursor-pointer">
               <img src="${item.image}" alt="${item.title.replace(/"/g, '&quot;')}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-300">
-              <div class="absolute top-2.5 left-2.5 flex flex-wrap gap-1.5 max-w-[80%]">
+              
+              <!-- Badges Kiri Atas -->
+              <div class="absolute top-2.5 left-2.5 flex flex-wrap gap-1.5 max-w-[70%]">
                 ${item.badges.map(b => `
                   <span class="backdrop-blur-md px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${b.color} shadow-sm">
                     ${b.label}
                   </span>
                 `).join('')}
+              </div>
+
+              <!-- Tombol Titik Tiga (Menu Share Internal Website) -->
+              <div class="absolute top-2.5 right-2.5 z-20">
+                <button onclick="toggleShareDropdown(event, ${item.id})" class="w-8 h-8 rounded-full bg-white/90 hover:bg-white text-gray-700 border border-stone-200/80 shadow-sm flex items-center justify-center transition" title="Product Options">
+                  <i class="fa-solid fa-ellipsis-vertical text-xs"></i>
+                </button>
+                <div id="share-dropdown-${item.id}" class="hidden absolute right-0 top-9 bg-white border border-stone-200 rounded-2xl shadow-xl py-1 px-1 min-w-[110px] z-30">
+                  <button onclick="copyProductShareLink(event, ${item.id})" class="w-full text-left px-3 py-1.5 text-xs font-bold text-gray-800 hover:bg-pinkSoft hover:text-pinkHighlight rounded-xl flex items-center gap-2 transition">
+                    <i class="fa-solid fa-share-nodes text-pinkHighlight text-xs"></i> Share
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -1316,7 +1392,7 @@
                 ` : ''}
               </div>
 
-              <a href="${item.link}" target="_blank" rel="noopener noreferrer" 
+              <a href="${item.link}${item.link.includes('?') ? '&' : '?'}tag=techfinds1405-20" target="_blank" rel="noopener noreferrer" 
                  class="bg-pinkHighlight hover:bg-rose-700 text-white px-4 py-2.5 rounded-full text-xs font-extrabold transition flex items-center gap-1.5 shadow-md shadow-pink-500/20 shrink-0">
                 View on Amazon <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
               </a>
@@ -1349,13 +1425,25 @@
       }
 
       grid.innerHTML = topPicks.map(item => `
-        <div class="bg-stone-800/90 rounded-2xl p-3.5 border border-stone-700/80 hover:border-pinkHighlight transition flex flex-col justify-between shadow-md group">
+        <div class="bg-stone-800/90 rounded-2xl p-3.5 border border-stone-700/80 hover:border-pinkHighlight transition flex flex-col justify-between shadow-md group relative">
           <div>
             <div onclick="openProductPreview(${item.id})" class="relative w-full h-36 rounded-xl bg-stone-900 flex items-center justify-center p-2 mb-2.5 border border-stone-800 cursor-pointer">
               <img src="${item.image}" alt="${item.title.replace(/"/g, '&quot;')}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-300">
               <span class="absolute top-1.5 left-1.5 bg-amber-500/20 text-amber-300 border border-amber-500/40 px-2 py-0.5 rounded-md text-[9px] font-bold backdrop-blur-md">
                 🔥 Best Seller
               </span>
+
+              <!-- Tombol Titik Tiga (Bestsellers) -->
+              <div class="absolute top-1.5 right-1.5 z-20">
+                <button onclick="toggleShareDropdown(event, ${item.id})" class="w-6 h-6 rounded-full bg-stone-900/80 hover:bg-stone-900 text-stone-300 border border-stone-700 shadow-sm flex items-center justify-center transition">
+                  <i class="fa-solid fa-ellipsis-vertical text-[10px]"></i>
+                </button>
+                <div id="share-dropdown-${item.id}" class="hidden absolute right-0 top-7 bg-white border border-stone-200 rounded-xl shadow-xl py-1 px-1 min-w-[100px] z-30">
+                  <button onclick="copyProductShareLink(event, ${item.id})" class="w-full text-left px-2.5 py-1 text-[11px] font-bold text-gray-800 hover:bg-pinkSoft hover:text-pinkHighlight rounded-lg flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-share-nodes text-pinkHighlight text-[10px]"></i> Share
+                  </button>
+                </div>
+              </div>
             </div>
             <span class="text-[9px] font-bold text-pink-400 uppercase tracking-wider block mb-1">${item.categoryLabel}</span>
             <h4 onclick="openProductPreview(${item.id})" class="font-bold text-xs text-white line-clamp-2 leading-snug mb-1 hover:text-pink-300 transition cursor-pointer" title="${item.title.replace(/"/g, '&quot;')}">${item.title}</h4>
@@ -1370,7 +1458,7 @@
               </div>
               ${item.boughtCount ? `<span class="text-[9px] text-rose-400 font-bold">⚡ ${item.boughtCount}</span>` : ''}
             </div>
-            <a href="${item.link}" target="_blank" rel="noopener noreferrer" 
+            <a href="${item.link}${item.link.includes('?') ? '&' : '?'}tag=techfinds1405-20" target="_blank" rel="noopener noreferrer" 
                class="w-full bg-pinkHighlight hover:bg-rose-700 text-white py-2 rounded-xl text-[11px] font-extrabold transition flex items-center justify-center gap-1 shadow-sm">
               View on Amazon <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
             </a>
@@ -1431,7 +1519,7 @@
                     <span class="text-xs text-amber-500 font-bold">&star; ${item.rating} (${item.reviewCount})</span>
                   </div>
                 </div>
-                <a href="${item.link}" target="_blank" class="bg-pinkHighlight hover:bg-rose-700 text-white px-4 py-2 rounded-full text-xs font-bold shrink-0 shadow-sm">
+                <a href="${item.link}?tag=techfinds1405-20" target="_blank" class="bg-pinkHighlight hover:bg-rose-700 text-white px-4 py-2 rounded-full text-xs font-bold shrink-0 shadow-sm">
                   View on Amazon &rarr;
                 </a>
               </div>
@@ -1628,6 +1716,7 @@
       renderProducts(products);
       renderBestsellers();
       renderBlogs();
+      checkUrlForProductDeepLink();
     });
   </script>
 </body>
