@@ -637,6 +637,7 @@
     }
 
     function copyProductShareLink(event, id) {
+        function copyProductShareLink(event, id) {
       event.stopPropagation();
       const dropdown = document.getElementById(`share-dropdown-${id}`);
       if (dropdown) dropdown.classList.add('hidden');
@@ -644,11 +645,7 @@
       const shareUrl = `${window.location.origin}${window.location.pathname}?product=${id}`;
       
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(shareUrl).then(() => {
-          alert("✅ Link produk katalog berhasil disalin ke clipboard!");
-        }).catch(() => {
-          fallbackCopyText(shareUrl);
-        });
+        navigator.clipboard.writeText(shareUrl);
       } else {
         fallbackCopyText(shareUrl);
       }
@@ -661,7 +658,6 @@
       tempInput.select();
       document.execCommand('copy');
       document.body.removeChild(tempInput);
-      alert("✅ Link produk katalog berhasil disalin!");
     }
 
     function checkUrlForProductDeepLink() {
