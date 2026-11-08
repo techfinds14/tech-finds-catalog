@@ -626,7 +626,7 @@
       }
     }
 
-    // FUNGSI SHARE LINK PRODUK KATALOG WEBSITE
+    // FUNGSI SHARE LINK PRODUK KATALOG WEBSITE (SILENT COPY - TANPA POPUP ALERT)
     function toggleShareDropdown(event, id) {
       event.stopPropagation();
       document.querySelectorAll('[id^="share-dropdown-"]').forEach(el => {
@@ -637,7 +637,6 @@
     }
 
     function copyProductShareLink(event, id) {
-        function copyProductShareLink(event, id) {
       event.stopPropagation();
       const dropdown = document.getElementById(`share-dropdown-${id}`);
       if (dropdown) dropdown.classList.add('hidden');
@@ -1308,7 +1307,6 @@
       openModal('productPreviewModal');
     }
 
-    // RENDER PRODUK DENGAN FITUR TOMBOL TITIK TIGA (SHARE)
     function renderProducts(items) {
       const grid = document.getElementById('product-grid');
       if (!grid) return;
